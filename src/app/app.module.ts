@@ -9,7 +9,7 @@ import {MaterialModule} from './components/pages/material.module';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { SideBarComponent } from './components/shared/side-bar/side-bar.component';
 import { NavBarComponent } from './components/shared/nav-bar/nav-bar.component';
-
+import {AngularFontAwesomeModule} from 'angular-font-awesome';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +22,8 @@ import { NavBarComponent } from './components/shared/nav-bar/nav-bar.component';
     BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
-    MaterialModule
+    MaterialModule,
+    AngularFontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
