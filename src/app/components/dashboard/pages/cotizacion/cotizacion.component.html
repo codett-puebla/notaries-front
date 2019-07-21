@@ -13,14 +13,14 @@
       <div class="flex-row" *ngFor="let cost of myForm.controls.arrayCost['controls']; let i = index">
         <mat-form-field>
           <input type="text" placeholder="Seleccione costo" matInput
-                 [matAutocomplete]="i">
-          <mat-autocomplete [formControlName]="i">
-            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-              {{option}}
-            </mat-option>
+                 [matAutocomplete]="">
+          <mat-autocomplete formControlName="i">
+<!--            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">-->
+            <!--              {{option}}-->
+            <!--            </mat-option>-->
           </mat-autocomplete>
         </mat-form-field>
-        <button type="button" mat-mini-fab color="warn" title="Eliminar"></button>
+        <button (click)="deleteCost(i)" type="button" mat-mini-fab color="warn" title="Eliminar"><i class="fa fa-times-circle"></i></button>
       </div>
     </div>
     <div>

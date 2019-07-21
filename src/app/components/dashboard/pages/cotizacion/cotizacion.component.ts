@@ -49,4 +49,12 @@ export class CotizacionComponent implements OnInit {
     console.log('añadiendo');
     (this.myForm.controls.arrayCost as FormArray).push(new FormControl());
   }
+
+  deleteCost(i: number) {
+    // @ts-ignore
+    if (this.myForm.controls.arrayCost.controls.length > 1) {
+      console.log('eliminando');
+      (this.myForm.controls.arrayCost as FormArray).removeAt(i);
+    }
+  }
 }
