@@ -1,15 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {elementHostAttrs} from '@angular/core/src/render3';
 
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.css']
 })
-export class NavBarComponent implements OnInit {
+export class NavBarComponent {
 
-  constructor() { }
+  toggle: boolean;
+  @Output() changeToggleEmiter: EventEmitter<boolean>;
 
-  ngOnInit() {
+  constructor() {
+    this.toggle = false;
+    this.changeToggleEmiter = new EventEmitter();
+  }
+
+  changeToogle() {
+    this.toggle = !this.toggle;
+    this.changeToggleEmiter.emit(this.toggle);
   }
 
 }
