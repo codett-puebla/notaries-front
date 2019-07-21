@@ -1,1 +1,12 @@
-<p>dashboard works!</p>
+<div class="d-flex" id="wrapper" [ngClass]="{'toggled' : toggle}">
+  <app-side-bar></app-side-bar>
+  <div id="page-content-wrapper">
+    <app-nav-bar (changeToggleEmiter)="changeToggle($event)"></app-nav-bar>
+    <div class="container-fluid">
+      <div class="container">
+        <router-outlet></router-outlet>
+      </div>
+      <app-footer></app-footer>
+    </div>
+  </div>
+</div>

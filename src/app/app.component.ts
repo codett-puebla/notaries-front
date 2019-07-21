@@ -7,11 +7,7 @@ import {Component} from '@angular/core';
 })
 export class AppComponent {
   title = 'notaries-front';
-  toggle: boolean;
 
-  changeToggle(toggle) {
-    this.toggle = toggle;
-  }
 
   ///#f8f9fa
 }
