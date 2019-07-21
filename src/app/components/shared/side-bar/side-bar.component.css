@@ -4,3 +4,11 @@
 .font-side{
   color:white;
 }
+
+.footer-sidebar{
+  position: absolute;
+  bottom: 0;
+}
+#sidebar-wrapper{
+  height: auto;
+}

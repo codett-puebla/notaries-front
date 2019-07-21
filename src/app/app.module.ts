@@ -19,7 +19,7 @@ import {MaterialModule} from './components/dashboard/pages/material.module';
     FooterComponent,
     SideBarComponent,
     NavBarComponent,
-    DashboardComponent
+    DashboardComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -29,6 +29,7 @@ import {MaterialModule} from './components/dashboard/pages/material.module';
     AngularFontAwesomeModule
   ],
   providers: [],
+  exports: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
