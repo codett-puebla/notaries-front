@@ -1,5 +1,4 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {elementHostAttrs} from '@angular/core/src/render3';
 
 @Component({
   selector: 'app-nav-bar',
