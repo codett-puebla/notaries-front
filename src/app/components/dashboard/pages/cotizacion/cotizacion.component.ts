@@ -12,7 +12,8 @@ export class CotizacionComponent implements OnInit {
   inputTramite = new FormControl();
   // opciones a seleccionar
   options: string[] = ['One', 'Two', 'Three'];
-  filteredOptions: Observable<string[]>;
+  filteredOptions: Observable<string[]>[] = [];
+  filteredTramites: any = [];
   arrayCost: any = ['Honorario'];
 
   constructor() {
@@ -20,15 +21,19 @@ export class CotizacionComponent implements OnInit {
       {
         inputTramite: this.inputTramite,
         arrayCost: new FormArray([
-          new FormControl('')
+          new FormGroup({
+            typeCost: new FormControl(''),
+            price: new FormControl(''),
+          })
         ])
       }
     )
     ;
+    this.manageArrayCostControl(0);
   }
 
   ngOnInit() {
-    this.filteredOptions = this.inputTramite.valueChanges
+    this.filteredTramites = this.inputTramite.valueChanges
       .pipe(
         startWith(''),
         map(value => this._filter(value))
@@ -47,14 +52,35 @@ export class CotizacionComponent implements OnInit {
 
   addNewCost() {
     console.log('añadiendo');
-    (this.myForm.controls.arrayCost as FormArray).push(new FormControl());
+    (this.myForm.controls.arrayCost as FormArray).push(
+      new FormGroup({
+        typeCost: new FormControl(''),
+        price: new FormControl(''),
+      })
+    );
+    // @ts-ignore
+    this.manageArrayCostControl(this.myForm.get('arrayCost').controls.length - 1);
   }
 
   deleteCost(i: number) {
     // @ts-ignore
-    if (this.myForm.controls.arrayCost.controls.length > 1) {
+    if (this.myForm.get('arrayCost').controls.length > 1) {
       console.log('eliminando');
       (this.myForm.controls.arrayCost as FormArray).removeAt(i);
+      this.filteredOptions.splice(i, 1);
     }
+  }
+
+  manageArrayCostControl(index: number) {
+    const arrayControl = this.myForm.get('arrayCost') as FormArray;
+    // @ts-ignore
+    this.filteredOptions[index] = arrayControl.at(index).controls.typeCost.valueChanges
+      .pipe(
+        startWith(''),
+        map((value: any) => {
+          return this._filter(value);
+        })
+      );
+
   }
 }

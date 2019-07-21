@@ -1,33 +1,49 @@
 <form [formGroup]="myForm" (ngSubmit)="submit()">
-  <div>
-    <mat-form-field>
+  <div class="form-group">
+    <mat-form-field class="mx-auto w-100">
       <input type="text" placeholder="Seleccione un tramite" matInput formControlName="inputTramite"
              [matAutocomplete]="auto">
       <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-          {{option}}
+        <mat-option *ngFor="let tramite of filteredTramites | async" [value]="tramite">
+          {{tramite}}
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
+
     <div class="col" formArrayName="arrayCost">
       <div class="flex-row" *ngFor="let cost of myForm.controls.arrayCost['controls']; let i = index">
-        <mat-form-field>
-          <input type="text" placeholder="Seleccione costo" matInput
-                 [matAutocomplete]="">
-          <mat-autocomplete formControlName="i">
-<!--            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">-->
-            <!--              {{option}}-->
-            <!--            </mat-option>-->
-          </mat-autocomplete>
-        </mat-form-field>
-        <button (click)="deleteCost(i)" type="button" mat-mini-fab color="warn" title="Eliminar"><i class="fa fa-times-circle"></i></button>
+        <div [formGroupName]="i.toString()">
+          <mat-form-field>
+            <input type="text" placeholder="Seleccione costo" matInput [matAutocomplete]="autoC"
+                   formControlName="typeCost">
+            <mat-autocomplete #autoC="matAutocomplete">
+              <mat-option *ngFor="let option of filteredOptions[i] | async" [value]="option">
+                {{option}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Precio" formControlName="price">
+          </mat-form-field>
+
+          <!--        accion para eliminar-->
+          <button (click)="deleteCost(i)" type="button" mat-mini-fab color="warn" title="Eliminar"><i
+            class="fa fa-times-circle"></i></button>
+        </div>
+      </div>
+
+      <!-- accion para añadir-->
+      <div class="">
+        <button (click)="addNewCost()" type="button" mat-mini-fab color="primary" title="Añadir"><i
+          class="fa fa-plus"></i>
+        </button>
       </div>
     </div>
+
     <div>
-      <button (click)="addNewCost()" type="button" mat-raised-button color="primary">Añadir Costo</button>
+      <button type="submit" mat-raised-button color="primary"><i class="fa fa-calculator"></i></button>
     </div>
 
-    <button type="button" mat-raised-button color="warn">Cancelar</button>
-    <button type="submit" mat-raised-button color="primary">Enviar</button>
   </div>
 </form>
