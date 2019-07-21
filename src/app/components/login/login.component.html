@@ -1,25 +1,20 @@
-<div style="background-image: url('./assets/img/fondo.jpg'); background-repeat: no-repeat">
-<div class="wrapper fadeInDown">
-  <div id="formContent">
-    <!-- Tabs Titles -->
+<div style="background-image: url('./assets/img/fondo.jpg'); width: 100%; height: 100%; position: absolute">
+  <div class="wrapper fadeInDown" >
+    <div class="formContent">
+      <!-- Icon -->
+      <div class="fadeIn first">
+        <img class="m-3 img-thumbnail" src="./assets/img/logo.png" id="icon" alt="User Icon"/>
+      </div>
 
-    <!-- Icon -->
-    <div class="fadeIn first">
-      <img src="./assets/img/notaria.jpg" id="icon" alt="User Icon"/>
+      <!-- Login Form -->
+      <form>
+        <input type="text" id="login" class="fadeIn second" name="login" placeholder="Usuario">
+        <input type="text" id="password" class="fadeIn third" name="login" placeholder="Contraseña">
+        <a style="width: 86%" class="btn btn-outline-primary m-3" [routerLink]="['/dashboard']"> Entrar </a>
+      </form>
+      <!-- Remind Passowrd -->
+      <div id="formFooter">
+      </div>
     </div>
-
-    <!-- Login Form -->
-    <form>
-      <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
-      <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
-      <a class="btn btn-outline-primary btn-block" [routerLink]="['/dashboard']"> Entrar </a>
-    </form>
-
-    <!-- Remind Passowrd -->
-    <div id="formFooter">
-      <a class="underlineHover" href="#">Forgot Password?</a>
-    </div>
-
   </div>
-</div>
 </div>

@@ -1,15 +1,6 @@
 
 /* BASIC */
 
-html {
-  background-color: #56baed;
-}
-
-body {
-  font-family: "Poppins", sans-serif;
-  height: 100vh;
-}
-
 a {
   color: #92badd;
   display:inline-block;
@@ -41,7 +32,7 @@ h2 {
   padding: 20px;
 }
 
-#formContent {
+.formContent {
   -webkit-border-radius: 10px 10px 10px 10px;
   border-radius: 10px 10px 10px 10px;
   background: #fff;
