@@ -1,0 +1,33 @@
+<form [formGroup]="myForm" (ngSubmit)="submit()">
+  <div>
+    <mat-form-field>
+      <input type="text" placeholder="Seleccione un tramite" matInput formControlName="inputTramite"
+             [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <div class="col" formArrayName="arrayCost">
+      <div class="flex-row" *ngFor="let cost of myForm.controls.arrayCost['controls']; let i = index">
+        <mat-form-field>
+          <input type="text" placeholder="Seleccione costo" matInput
+                 [matAutocomplete]="i">
+          <mat-autocomplete [formControlName]="i">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+        <button type="button" mat-mini-fab color="warn" title="Eliminar"></button>
+      </div>
+    </div>
+    <div>
+      <button (click)="addNewCost()" type="button" mat-raised-button color="primary">Añadir Costo</button>
+    </div>
+
+    <button type="button" mat-raised-button color="warn">Cancelar</button>
+    <button type="submit" mat-raised-button color="primary">Enviar</button>
+  </div>
+</form>
