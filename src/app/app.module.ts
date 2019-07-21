@@ -10,13 +10,15 @@ import { FooterComponent } from './components/shared/footer/footer.component';
 import { SideBarComponent } from './components/shared/side-bar/side-bar.component';
 import { NavBarComponent } from './components/shared/nav-bar/nav-bar.component';
 import {AngularFontAwesomeModule} from 'angular-font-awesome';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     FooterComponent,
     SideBarComponent,
-    NavBarComponent
+    NavBarComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserAnimationsModule,
