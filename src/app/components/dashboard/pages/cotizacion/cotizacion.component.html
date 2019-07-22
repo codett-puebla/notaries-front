@@ -1,6 +1,6 @@
 <form [formGroup]="myForm" (ngSubmit)="submit()">
   <div class="form-group">
-    <mat-form-field class="mx-auto w-100">
+    <mat-form-field class="w-100">
       <input type="text" placeholder="Seleccione un tramite" matInput formControlName="inputTramite"
              [matAutocomplete]="auto">
       <mat-autocomplete #auto="matAutocomplete">
@@ -10,40 +10,68 @@
       </mat-autocomplete>
     </mat-form-field>
 
-    <div class="col" formArrayName="arrayCost">
-      <div class="flex-row" *ngFor="let cost of myForm.controls.arrayCost['controls']; let i = index">
-        <div [formGroupName]="i.toString()">
-          <mat-form-field>
-            <input type="text" placeholder="Seleccione costo" matInput [matAutocomplete]="autoC"
-                   formControlName="typeCost">
-            <mat-autocomplete #autoC="matAutocomplete">
-              <mat-option *ngFor="let option of filteredOptions[i] | async" [value]="option">
-                {{option}}
-              </mat-option>
-            </mat-autocomplete>
-          </mat-form-field>
+    <div formArrayName="arrayCost">
+      <!-- accion para añadir-->
 
-          <mat-form-field class="example-full-width">
-            <input matInput placeholder="Precio" formControlName="price">
-          </mat-form-field>
-
-          <!--        accion para eliminar-->
-          <button (click)="deleteCost(i)" type="button" mat-mini-fab color="warn" title="Eliminar"><i
-            class="fa fa-times-circle"></i></button>
+      <div class="row margen">
+        <div class="col-md-8">
+        </div>
+        <div class="col-md-2">
+          <button (click)="addNewCost()" type="button" mat-raised-button color="primary"
+                  title="Añadir"><i
+            class="fa fa-plus"> Añadir</i>
+          </button>
+        </div>
+        <div class="col-md-2">
         </div>
       </div>
 
-      <!-- accion para añadir-->
-      <div class="">
-        <button (click)="addNewCost()" type="button" mat-mini-fab color="primary" title="Añadir"><i
-          class="fa fa-plus"></i>
+
+      <div class="row margen">
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-8">
+          <div *ngFor="let cost of myForm.controls.arrayCost['controls']; let i = index">
+            <div [formGroupName]="i.toString()" class="col">
+              <div class="row">
+                <div class="col-md-4">
+                  <mat-form-field>
+                    <input type="text" placeholder="Seleccione costo" matInput [matAutocomplete]="autoC"
+                           formControlName="typeCost">
+                    <mat-autocomplete #autoC="matAutocomplete">
+                      <mat-option *ngFor="let option of filteredOptions[i] | async" [value]="option">
+                        {{option}}
+                      </mat-option>
+                    </mat-autocomplete>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                  <mat-form-field>
+                    <input matInput placeholder="Precio" formControlName="price">
+                  </mat-form-field>
+                </div>
+                <!--        accion para eliminar-->
+                <div class="col-md-4">
+                  <button (click)="deleteCost(i)" type="button" mat-mini-fab color="warn" title="Eliminar"><i
+                    class="fa fa-times-circle"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row margen">
+      <div class="col-md-8">
+      </div>
+      <div class="col-md-2">
+        <button class="margen" type="submit" mat-raised-button color="primary"><i class="fa fa-calculator"> Calcular</i>
         </button>
       </div>
+      <div class="col-md-2">
+      </div>
     </div>
-
-    <div>
-      <button type="submit" mat-raised-button color="primary"><i class="fa fa-calculator"></i></button>
-    </div>
-
   </div>
 </form>

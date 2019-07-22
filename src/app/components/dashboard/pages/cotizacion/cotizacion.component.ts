@@ -14,7 +14,6 @@ export class CotizacionComponent implements OnInit {
   options: string[] = ['One', 'Two', 'Three'];
   filteredOptions: Observable<string[]>[] = [];
   filteredTramites: any = [];
-  arrayCost: any = ['Honorario'];
 
   constructor() {
     this.myForm = new FormGroup(
