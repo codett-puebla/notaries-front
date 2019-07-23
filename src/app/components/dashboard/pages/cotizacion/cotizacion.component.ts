@@ -5,7 +5,8 @@ import {map, startWith} from 'rxjs/operators';
 
 @Component({
   selector: 'app-cotizacion',
-  templateUrl: './cotizacion.component.html'
+  templateUrl: './cotizacion.component.html',
+  styleUrls: ['./cotizacion.component.css']
 })
 export class CotizacionComponent implements OnInit {
   myForm: FormGroup;
@@ -27,9 +28,14 @@ export class CotizacionComponent implements OnInit {
           })
         ])
       }
-    )
-    ;
+    );
     this.manageArrayCostControl(0);
+    this.inputTramite.valueChanges.subscribe(
+      () => {
+        (this.myForm.controls.arrayCost as FormArray).clear();
+        this.addNewCost();
+      }
+    );
   }
 
   ngOnInit() {
@@ -59,7 +65,7 @@ export class CotizacionComponent implements OnInit {
       })
     );
     // @ts-ignore
-    this.manageArrayCostControl(this.myForm.get('arrayCost').controls.length - 1);
+    this.manageArrayCostControl(0);
   }
 
   deleteCost(i: number) {
@@ -68,6 +74,7 @@ export class CotizacionComponent implements OnInit {
       console.log('eliminando');
       (this.myForm.controls.arrayCost as FormArray).removeAt(i);
       this.filteredOptions.splice(i, 1);
+      this.calculateCost(false);
     }
   }
 
@@ -81,10 +88,18 @@ export class CotizacionComponent implements OnInit {
           return this._filter(value);
         })
       );
-
+    arrayControl.at(index).valueChanges.subscribe(
+      () => {
+        this.calculateCost(true);
+      }
+    );
   }
 
-  calculateCost() {
-    this.costTotal += 1;
+  calculateCost(isSum: boolean) {
+    if (isSum) {
+      this.costTotal += 1;
+    } else {
+      this.costTotal -= 1;
+    }
   }
 }

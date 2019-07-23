@@ -1,0 +1,9 @@
+.priceBox {
+  text-align: center;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  overflow: visible;
+  border: 2px solid var(--primary);
+  border-radius: 4px;
+}

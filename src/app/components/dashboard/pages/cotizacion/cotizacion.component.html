@@ -2,7 +2,7 @@
   <form [formGroup]="myForm" (ngSubmit)="submit()">
     <div class="form-group">
       <mat-form-field class="w-100">
-        <input type="text" placeholder="Seleccione un tramite" matInput formControlName="inputTramite"
+        <input type="text" placeholder="Seleccione un tramité" matInput formControlName="inputTramite"
                [matAutocomplete]="auto">
         <mat-autocomplete #auto="matAutocomplete">
           <mat-option *ngFor="let tramite of filteredTramites | async" [value]="tramite">
@@ -10,77 +10,77 @@
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
-
+      <!--        body section costType price-->
       <div formArrayName="arrayCost">
 
         <!-- accion para añadir-->
-        <div class="row margen">
-          <div class="col-md-8">
-          </div>
+        <div class="row justify-content-end margen">
           <div class="col-md-2">
             <button (click)="addNewCost()" type="button" mat-raised-button color="primary"
                     title="Añadir"><i
               class="fa fa-plus"> Añadir</i>
             </button>
           </div>
-          <div class="col-md-2">
-          </div>
         </div>
 
         <!--        Seccion para escoger costo y setear precio-->
-        <div class="row margen">
-          <div class="col-md-2">
-          </div>
-          <div class="col-md-8">
-            <div *ngFor="let cost of myForm.controls.arrayCost['controls']; let i = index">
-              <div [formGroupName]="i.toString()" class="col">
-                <div class="row">
-                  <div class="col-md-4">
-                    <mat-form-field>
-                      <input type="text" placeholder="Seleccione costo" matInput [matAutocomplete]="autoC"
-                             formControlName="typeCost">
-                      <mat-autocomplete #autoC="matAutocomplete">
-                        <mat-option *ngFor="let option of filteredOptions[i] | async" [value]="option">
-                          {{option}}
-                        </mat-option>
-                      </mat-autocomplete>
-                    </mat-form-field>
-                  </div>
-                  <div class="col-md-4">
-                    <mat-form-field>
-                      <input matInput placeholder="Precio" formControlName="price">
-                    </mat-form-field>
-                  </div>
-                  <!--        accion para eliminar-->
-                  <div class="col-md-4">
-                    <button (click)="deleteCost(i)" type="button" mat-mini-fab color="warn" title="Eliminar"><i
-                      class="fa fa-times-circle"></i></button>
-                  </div>
-                </div>
+        <div class="row justify-content-center"
+             *ngFor="let cost of myForm.controls.arrayCost['controls']; let i = index">
+          <div class="col-md-6">
+            <div [formGroupName]="i.toString()" class="row">
+              <!--costType-->
+              <div class="col pr-0 pl-0">
+
+                <mat-form-field>
+
+                  <input type="text" placeholder="Seleccione costo" matInput [matAutocomplete]="autoC"
+                         formControlName="typeCost">
+
+                  <mat-autocomplete #autoC="matAutocomplete">
+                    <mat-option *ngFor="let option of filteredOptions[i] | async" [value]="option">
+                      {{option}}
+                    </mat-option>
+                  </mat-autocomplete>
+                </mat-form-field>
+
+              </div>
+              <!--price-->
+              <div class="col pr-0 pl-0">
+                <mat-form-field>
+                  <input matInput placeholder="Precio" formControlName="price">
+                </mat-form-field>
+              </div>
+              <!--accion para eliminar-->
+              <div class="col  pr-0 pl-0">
+                <button (click)="deleteCost(i)" type="button" mat-mini-fab color="warn" title="Eliminar"><i
+                  class="fa fa-times-circle"></i></button>
               </div>
             </div>
           </div>
         </div>
 
       </div>
-
-      <div class="row justify-content-end margen">
-        <div class="col-3">
-        <span>
-          {{costTotal}}
-        </span>
-        </div>
-        <div class="col-3">
-          <button (click)="calculateCost()" class="margen" type="button" mat-raised-button color="primary"><i
-            class="fa fa-calculator">
-            Calcular</i>
-          </button>
+      <!--footer section-->
+      <div class="row justify-content-center margen">
+        <div class="col-md-6 ">
+          <div class="row justify-content-start">
+            <div class="col text-center font-weight-bold">
+              <label>Total</label>
+            </div>
+            <div class="col priceBox">
+              <span>
+              ${{costTotal | number:'1.2-2'}}
+              </span>
+            </div>
+            <div class="col">
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="row justify-content-end margen">
-      <div class="col-4">
+    <div class="row justify-content-center margen">
+      <div class="col-3">
         <button class="btn-block" type="submit" mat-raised-button color="primary"><i class="fa fa-file"> Generar
           Tramite</i>
         </button>
