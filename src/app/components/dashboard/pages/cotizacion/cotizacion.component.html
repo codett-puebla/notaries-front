@@ -12,8 +12,8 @@
       </mat-form-field>
 
       <div formArrayName="arrayCost">
-        <!-- accion para añadir-->
 
+        <!-- accion para añadir-->
         <div class="row margen">
           <div class="col-md-8">
           </div>
@@ -27,7 +27,7 @@
           </div>
         </div>
 
-
+        <!--        Seccion para escoger costo y setear precio-->
         <div class="row margen">
           <div class="col-md-2">
           </div>
@@ -64,15 +64,26 @@
 
       </div>
 
-      <div class="row margen">
-        <div class="col-md-8">
+      <div class="row justify-content-end margen">
+        <div class="col-3">
+        <span>
+          {{costTotal}}
+        </span>
         </div>
-        <div class="col-md-2">
-          <button class="margen" type="submit" mat-raised-button color="primary"><i class="fa fa-calculator"> Calcular</i>
+        <div class="col-3">
+          <button (click)="calculateCost()" class="margen" type="button" mat-raised-button color="primary"><i
+            class="fa fa-calculator">
+            Calcular</i>
           </button>
         </div>
-        <div class="col-md-2">
-        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-end margen">
+      <div class="col-4">
+        <button class="btn-block" type="submit" mat-raised-button color="primary"><i class="fa fa-file"> Generar
+          Tramite</i>
+        </button>
       </div>
     </div>
   </form>

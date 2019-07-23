@@ -14,6 +14,7 @@ export class CotizacionComponent implements OnInit {
   options: string[] = ['One', 'Two', 'Three'];
   filteredOptions: Observable<string[]>[] = [];
   filteredTramites: any = [];
+  costTotal = 0;
 
   constructor() {
     this.myForm = new FormGroup(
@@ -81,5 +82,9 @@ export class CotizacionComponent implements OnInit {
         })
       );
 
+  }
+
+  calculateCost() {
+    this.costTotal += 1;
   }
 }
