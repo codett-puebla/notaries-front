@@ -12,3 +12,19 @@
 #sidebar-wrapper{
   height: auto;
 }
+
+img{
+  width: 150px;
+  margin-top: 10px;
+}
+.background-content-img{
+  background-color: #414c56;
+}
+
+.font-size-external-link{
+  font-size: 11px;
+}
+
+.font-size-external-link-title{
+  font-size: 15px;
+}
