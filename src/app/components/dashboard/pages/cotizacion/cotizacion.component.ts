@@ -65,7 +65,7 @@ export class CotizacionComponent implements OnInit {
       })
     );
     // @ts-ignore
-    this.manageArrayCostControl(0);
+    this.manageArrayCostControl(this.myForm.controls.arrayCost.controls.length - 1);
   }
 
   deleteCost(i: number) {
