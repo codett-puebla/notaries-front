@@ -1,6 +1,7 @@
 <div class="container-fluid">
   <form [formGroup]="myForm" (ngSubmit)="submit()">
     <div class="form-group">
+
       <mat-form-field class="w-100">
         <input type="text" placeholder="Seleccione un tramité" matInput formControlName="inputTramite"
                [matAutocomplete]="auto">
@@ -10,73 +11,96 @@
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
-      <!--        body section costType price-->
-      <div formArrayName="arrayCost">
 
-        <!-- accion para añadir-->
-        <div class="row justify-content-end margen">
-          <div class="col-md-2">
-            <button (click)="addNewCost()" type="button" mat-raised-button color="primary"
-                    title="Añadir"><i
-              class="fa fa-plus"> Añadir</i>
-            </button>
-          </div>
-        </div>
+      <mat-accordion>
+        <mat-expansion-panel [expanded]="true">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Costos
+            </mat-panel-title>
+            <mat-panel-description>
+              Llene los campos para costos
+              <i class="fa fa-dollar ml-1"></i>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
 
-        <!--        Seccion para escoger costo y setear precio-->
-        <div class="row justify-content-center"
-             *ngFor="let cost of myForm.controls.arrayCost['controls']; let i = index">
-          <div class="col-md-6">
-            <div [formGroupName]="i.toString()" class="row">
-              <!--costType-->
-              <div class="col pr-0 pl-0">
+          <!--    body-->
+          <div>
+            <!--        body section costType price-->
+            <div formArrayName="arrayCost">
 
-                <mat-form-field>
-
-                  <input type="text" placeholder="Seleccione costo" matInput [matAutocomplete]="autoC"
-                         formControlName="typeCost">
-
-                  <mat-autocomplete #autoC="matAutocomplete">
-                    <mat-option *ngFor="let option of filteredOptions[i] | async" [value]="option">
-                      {{option}}
-                    </mat-option>
-                  </mat-autocomplete>
-                </mat-form-field>
-
+              <!-- accion para añadir-->
+              <div class="row justify-content-end margen">
+                <div class="col-md-2">
+                  <button (click)="addNewCost()" type="button" mat-raised-button color="primary"
+                          title="Añadir"><i
+                    class="fa fa-plus"> Añadir</i>
+                  </button>
+                </div>
               </div>
-              <!--price-->
-              <div class="col pr-0 pl-0">
-                <mat-form-field>
-                  <input matInput placeholder="Precio" formControlName="price">
-                </mat-form-field>
+
+              <!--        Seccion para escoger costo y setear precio-->
+              <div class="row justify-content-center"
+                   *ngFor="let cost of myForm.controls.arrayCost['controls']; let i = index">
+                <div class="col">
+                  <div [formGroupName]="i.toString()" class="row margen">
+                    <!--costType-->
+                    <div class="col pr-0 pl-0">
+
+                      <div class="row justify-content-center">
+                        <mat-form-field class="w-75">
+
+                          <input type="text" placeholder="Seleccione costo" matInput [matAutocomplete]="autoC"
+                                 formControlName="typeCost">
+
+                          <mat-autocomplete #autoC="matAutocomplete">
+                            <mat-option *ngFor="let option of filteredOptions[i] | async" [value]="option">
+                              {{option}}
+                            </mat-option>
+                          </mat-autocomplete>
+                        </mat-form-field>
+                      </div>
+
+                    </div>
+                    <!--price-->
+                    <div class="col pr-0 pl-0">
+                      <div class="row justify-content-center">
+                        <mat-form-field class="w-75">
+                          <input matInput placeholder="Precio" formControlName="price">
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <!--accion para eliminar-->
+                    <div class="col-2  pr-0 pl-0">
+                      <button (click)="deleteCost(i)" type="button" mat-mini-fab color="warn" title="Eliminar"><i
+                        class="fa fa-times-circle"></i></button>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <!--accion para eliminar-->
-              <div class="col  pr-0 pl-0">
-                <button (click)="deleteCost(i)" type="button" mat-mini-fab color="warn" title="Eliminar"><i
-                  class="fa fa-times-circle"></i></button>
-              </div>
+
             </div>
-          </div>
-        </div>
 
-      </div>
-      <!--footer section-->
-      <div class="row justify-content-center margen">
-        <div class="col-md-6 ">
-          <div class="row justify-content-start">
-            <div class="col text-center font-weight-bold">
-              <label>Total</label>
-            </div>
-            <div class="col priceBox">
+            <!--footer section-->
+            <div class="row justify-content-center margen">
+              <div class="col-md-6 ">
+                <div class="row justify-content-start">
+                  <div class="col text-center font-weight-bold">
+                    <label>Total</label>
+                  </div>
+                  <div class="col priceBox">
               <span>
               ${{costTotal | number:'1.2-2'}}
               </span>
-            </div>
-            <div class="col">
+                  </div>
+                  <div class="col">
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
+        </mat-expansion-panel>
+      </mat-accordion>
     </div>
 
     <div class="row justify-content-center margen">
@@ -88,3 +112,5 @@
     </div>
   </form>
 </div>
+
+
