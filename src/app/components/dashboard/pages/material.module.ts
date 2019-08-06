@@ -11,20 +11,35 @@ import {
   MatInputModule
 } from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {CommonModule} from '@angular/common';
+import {CommonModule, registerLocaleData} from '@angular/common';
 import {NewTransactComponent} from './new-transact/new-transact.component';
 import {ExternalLinksComponent} from './external-links/external-links.component';
 import {DomseguroPipe} from '../../../pipes/domseguro.pipe';
+import {CalendarComponent} from './calendar/calendar.component';
+import {DragAndDropModule} from 'angular-draggable-droppable';
+import {CalendarModule, DateAdapter} from 'angular-calendar';
+import {HeaderCalendarComponent} from './calendar/header-calendar/header-calendar.component';
+import {adapterFactory} from 'angular-calendar/date-adapters/date-fns';
+import localeEs from '@angular/common/locales/es';
+import {ContextMenuModule} from 'ngx-contextmenu';
+
+registerLocaleData(localeEs);
 
 @NgModule({
   declarations: [
     CotizacionComponent,
     NewTransactComponent,
     ExternalLinksComponent,
-    DomseguroPipe
+    DomseguroPipe,
+    CalendarComponent,
+    HeaderCalendarComponent
   ],
   exports: [
-    CotizacionComponent
+    CotizacionComponent,
+    NewTransactComponent,
+    ExternalLinksComponent,
+    DomseguroPipe,
+    CalendarComponent
   ],
   imports: [
     MatAutocompleteModule,
@@ -38,6 +53,12 @@ import {DomseguroPipe} from '../../../pipes/domseguro.pipe';
     MatExpansionModule,
     MatDatepickerModule,
     MatIconModule,
+    DragAndDropModule,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory
+    }),
+    ContextMenuModule,
   ]
 })
 export class MaterialModule {

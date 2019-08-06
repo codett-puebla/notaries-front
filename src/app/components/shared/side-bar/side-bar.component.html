@@ -4,28 +4,40 @@
   </div>
 
   <div class="list-group list-group-flush">
-    <a class="list-group-item list-group-item-action bg-dark-blue font-side" routerLinkActive="active" [routerLink]="['budget']">
+    <a class="list-group-item list-group-item-action bg-dark-blue font-side" routerLinkActive="active"
+       [routerLink]="['budget']">
       <i class="fa fa-money margin-icon"></i> Nuevo Presupuesto
     </a>
 
-    <a class="list-group-item list-group-item-action bg-dark-blue font-side" routerLinkActive="active" [routerLink]="['startTransact']">
+    <a class="list-group-item list-group-item-action bg-dark-blue font-side" routerLinkActive="active"
+       [routerLink]="['startTransact']">
       <i class="fa fa-plus-circle margin-icon"></i> Iniciar trámite
+    </a>
+    <a class="list-group-item list-group-item-action bg-dark-blue font-side" routerLinkActive="active"
+       [routerLink]="['calendar']">
+      <i class="fa fa-calendar margin-icon"></i> Calendario
     </a>
   </div>
 
   <div class="font-side footer-sidebar">
     <div class="list-group list-group-flush">
-      <a class="list-group-item list-group-item-action bg-dark-blue font-side text-center sidebar-heading font-size-external-link-title"> Enlaces externos </a>
-      <a href="{{ linkCURP }}" target="_blank" class="list-group-item list-group-item-action bg-dark-blue font-side font-size-external-link">
+      <a
+        class="list-group-item list-group-item-action bg-dark-blue font-side text-center sidebar-heading font-size-external-link-title">
+        Enlaces externos </a>
+      <a href="{{ linkCURP }}" target="_blank"
+         class="list-group-item list-group-item-action bg-dark-blue font-side font-size-external-link">
         <i class="fa fa-file margin-icon"></i> Consultar CURP
       </a>
-      <a href="{{ linkRFC }}" target="_blank" class="list-group-item list-group-item-action bg-dark-blue font-side font-size-external-link">
+      <a href="{{ linkRFC }}" target="_blank"
+         class="list-group-item list-group-item-action bg-dark-blue font-side font-size-external-link">
         <i class="fa fa-check margin-icon"></i> Validar RFC
       </a>
-      <a href="{{ linkNewRFC }}" target="_blank" class="list-group-item list-group-item-action bg-dark-blue font-side font-size-external-link">
+      <a href="{{ linkNewRFC }}" target="_blank"
+         class="list-group-item list-group-item-action bg-dark-blue font-side font-size-external-link">
         <i class="fa fa-plus-square margin-icon"></i> Inscripción de RFC
       </a>
-      <a href="{{ linkISABI }}" target="_blank" class="list-group-item list-group-item-action bg-dark-blue font-side font-size-external-link">
+      <a href="{{ linkISABI }}" target="_blank"
+         class="list-group-item list-group-item-action bg-dark-blue font-side font-size-external-link">
         <i class="fa fa-external-link margin-icon"></i> ISABI
       </a>
     </div>

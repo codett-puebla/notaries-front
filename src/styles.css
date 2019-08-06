@@ -1,4 +1,17 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "~angular-calendar/css/angular-calendar.css";
+
+.cal-month-view .cal-day-cell.cal-today {
+  background-color: #5cb4c2 !important;
+  color: white;
+}
+
+
+.cal-week-view .cal-header.cal-today {
+  background-color: #5cb4c2 !important;
+  color: white;
+}
+
 body {
   overflow-x: hidden;
   overflow-y: hidden;
@@ -45,10 +58,10 @@ body {
   }
 }
 
-.bg-dark-blue{
+.bg-dark-blue {
   background-color: #263442 !important;
 }
 
-.margen{
+.margen {
   margin-top: 25px;
 }
