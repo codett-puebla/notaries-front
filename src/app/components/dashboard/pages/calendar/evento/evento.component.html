@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <h1 mat-dialog-title>{{data.meta.type}} Evento</h1>
+    <div mat-dialog-content>
+
+      <div class="w-100">
+        <mat-form-field appearance="outline">
+          <input type="text" matInput [(ngModel)]="data.title">
+          <mat-label>Nombre del evento</mat-label>
+        </mat-form-field>
+      </div>
+
+      <div class="w-100">
+        <mat-form-field appearance="outline">
+          <input type="text" matInput [(ngModel)]="data.meta.description">
+          <mat-label>Descripción del evento</mat-label>
+        </mat-form-field>
+      </div>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button class="bg-danger" (click)="onNoClick()">Cancelar</button>
+      <button mat-button class="bg-primary" [mat-dialog-close]="data">Guardar</button>
+    </div>
+  </div>
+</div>
