@@ -1,6 +1,8 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {CalendarEvent, CalendarEventAction, CalendarEventTimesChangedEvent, CalendarView} from 'angular-calendar';
 import {Subject} from 'rxjs';
+import {EventoComponent} from './evento/evento.component';
+import {MatDialog} from '@angular/material';
 
 @Component({
   selector: 'app-calendar',
@@ -20,7 +22,7 @@ export class CalendarComponent {
     {
       label: '<i class="fa fa-fw fa-pencil"></i>',
       onClick: ({event}: { event: CalendarEvent }): void => {
-        console.log(event);
+        this.openDialog(event, 'Editar');
       }
     },
     {
@@ -33,17 +35,24 @@ export class CalendarComponent {
 
   externalEvents: CalendarEvent[] = [
     {
-      title: 'Event 1',
+      title: 'Nuevo evento',
       color: {primary: '#0FF', secondary: '#F0F'},
       start: new Date(),
       draggable: true,
       actions: this.actions,
+      meta: {
+        description: 'Sin descripción',
+      }
     },
   ];
 
   events: CalendarEvent[] = [];
   activeDayIsOpen = false;
   refresh = new Subject<void>();
+
+  constructor(public dialog: MatDialog) {
+  }
+
 
   eventDropped({
                  event,
@@ -81,10 +90,13 @@ export class CalendarComponent {
   addEvent(date: Date) {
     this.events.push({
       start: date,
-      title: 'New event',
+      title: 'Nuevo evento',
       color: {primary: '#0FF', secondary: '#000'},
       draggable: true,
-      actions: this.actions
+      actions: this.actions,
+      meta: {
+        description: 'Sin descripción',
+      }
     })
     ;
     this.viewDate = date;
@@ -105,6 +117,45 @@ export class CalendarComponent {
   deleteEvent(event) {
     const index = this.events.indexOf(event);
     this.events.splice(index, 1);
+    this.refresh.next();
+  }
+
+  openDialog(event, type): void {
+    const index = this.events.indexOf(event);
+    console.log(event);
+    event.meta.type = type;
+    const dialogRef = this.dialog.open(EventoComponent, {
+      width: '300px',
+      data: event
+    });
+
+    dialogRef.afterClosed().subscribe((result: any) => {
+      // console.log(result);
+      this.refresh.next();
+    });
+  }
+
+  addExternalEvent() {
+    this.externalEvents.push({
+      start: new Date(),
+      title: 'Nuevo evento',
+      color: {primary: '#0FF', secondary: '#000'},
+      draggable: true,
+      actions: this.actions,
+      meta: {
+        description: 'Sin descripción',
+      }
+    });
+    this.refresh.next();
+  }
+
+  deleteExternalEvent(index) {
+    this.externalEvents.splice(index, 1);
+    this.refresh.next();
+  }
+
+  editExternalEvent(event) {
+    this.openDialog(event, 'Añadir');
     this.refresh.next();
   }
 }

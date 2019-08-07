@@ -5,6 +5,7 @@ import {
   MatButtonModule,
   MatCheckboxModule,
   MatDatepickerModule,
+  MatDialogModule,
   MatExpansionModule,
   MatFormFieldModule,
   MatIconModule,
@@ -22,6 +23,7 @@ import {HeaderCalendarComponent} from './calendar/header-calendar/header-calenda
 import {adapterFactory} from 'angular-calendar/date-adapters/date-fns';
 import localeEs from '@angular/common/locales/es';
 import {ContextMenuModule} from 'ngx-contextmenu';
+import {EventoComponent} from './calendar/evento/evento.component';
 
 registerLocaleData(localeEs);
 
@@ -32,7 +34,8 @@ registerLocaleData(localeEs);
     ExternalLinksComponent,
     DomseguroPipe,
     CalendarComponent,
-    HeaderCalendarComponent
+    HeaderCalendarComponent,
+    EventoComponent
   ],
   exports: [
     CotizacionComponent,
@@ -59,6 +62,10 @@ registerLocaleData(localeEs);
       useFactory: adapterFactory
     }),
     ContextMenuModule,
+    MatDialogModule,
+  ],
+  entryComponents: [
+    EventoComponent
   ]
 })
 export class MaterialModule {
