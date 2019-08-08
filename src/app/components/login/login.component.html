@@ -10,7 +10,7 @@
       <form (ngSubmit)="login(f)" #f="ngForm"
             class="login100-form validate-form"
       >
-        <input type="email" id="login" class="fadeIn second inputLogin" name="email" placeholder="Usuario" [(ngModel)]="user.email">
+        <input type="email" id="login" class="fadeIn second inputLogin" name="username" placeholder="Usuario" [(ngModel)]="user.username">
         <input type="password" id="password" class="fadeIn third inputLogin" name="password" placeholder="Contraseña" [(ngModel)]="user.password">
 
         <button type="submit" style="width: 86%" class="btn btn-outline-primary m-3"> Login </button>
