@@ -6,10 +6,13 @@ import {
   MatCheckboxModule,
   MatDatepickerModule,
   MatDialogModule,
+  MatDividerModule,
   MatExpansionModule,
   MatFormFieldModule,
   MatIconModule,
-  MatInputModule
+  MatInputModule,
+  MatTabsModule,
+  MatTooltipModule
 } from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CommonModule, registerLocaleData} from '@angular/common';
@@ -24,6 +27,7 @@ import {adapterFactory} from 'angular-calendar/date-adapters/date-fns';
 import localeEs from '@angular/common/locales/es';
 import {ContextMenuModule} from 'ngx-contextmenu';
 import {EventoComponent} from './calendar/evento/evento.component';
+import {DocumentComponent} from './document/document.component';
 
 registerLocaleData(localeEs);
 
@@ -35,7 +39,8 @@ registerLocaleData(localeEs);
     DomseguroPipe,
     CalendarComponent,
     HeaderCalendarComponent,
-    EventoComponent
+    EventoComponent,
+    DocumentComponent
   ],
   exports: [
     CotizacionComponent,
@@ -63,6 +68,9 @@ registerLocaleData(localeEs);
     }),
     ContextMenuModule,
     MatDialogModule,
+    MatTabsModule,
+    MatTooltipModule,
+    MatDividerModule,
   ],
   entryComponents: [
     EventoComponent
