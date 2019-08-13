@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
 
   login(form: NgForm) {
 
-    if (this.validateForm()) {
+    if (this.validateForm(form)) {
       return;
     }
 
@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
     this._auth.login(this.user).subscribe(
       response => {
         Swal.close();
-        this.saveDataUser(response.user);
+        this.saveDataUser(response['user']);
         this._router.navigateByUrl('/dashboard');
       },
       error => {

@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {UserModel} from '../../models/user.model';
 import {AuthApiService} from './auth-api.service';
 
@@ -11,7 +11,7 @@ import {map} from 'rxjs/operators';
 export class AuthService {
 
   private notaryHost = 'http://notary.test/getOauth';
-  private headers = new Headers();
+  private headers = new HttpHeaders();
   private tokenUser: string;
   constructor(
     private _http: HttpClient,
@@ -26,7 +26,7 @@ export class AuthService {
 
     return this._http.post(this.notaryHost,
       user,
-      {headers: this.headers}
+      {headers : this.headers}
       ).pipe(map(
       response => {
         this.saveTokenUser(response);

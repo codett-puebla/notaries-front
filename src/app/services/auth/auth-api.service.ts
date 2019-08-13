@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -20,11 +20,11 @@ export class AuthApiService {
   }
 
   login() {
-    return this._http.post(
-      `${this.notaryHost}`, this.requestBody
+    this._http.post(
+      this.notaryHost, this.requestBody
     ).subscribe(
       response => this.saveToken(response),
-      error => console.error(error.error.message)
+      error => console.error('Error --> ', error)
     );
   }
 
