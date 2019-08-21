@@ -1814,8 +1814,656 @@ AL CONTRIBUYENTE</span>
     <ng-template mat-tab-label>
       Forma 2
     </ng-template>
+    <div class="container mt-4">
+      <div class="row">
+        <div class="col">
+          <picture>
+            <img src="./assets/img/logo_puebla.jpg">
+          </picture>
+        </div>
+        <div class="col-6">
+          <h2 class="text-center">SECRETARÍA DE FINANZAS
+            DEL GOBIERNO DEL ESTADO DE PUEBLA</h2>
+        </div>
+        <div class="col">
+          <mat-form-field appearance="outline">
+            <input matInput>
+            <mat-label>Folio</mat-label>
+          </mat-form-field>
+        </div>
+      </div>
+      <p class="text-center mt-5">DECLARACIÓN PARA EL PAGO DE DERECHOS POR LOS SERVICIOS QUE PRESTAN EL REGISTRO PÚBLICO
+        DE LA PROPIEDAD Y DEL COMERCIO Y LAS AUTORIDADES FISCALES DEL ESTADO.</p>
+      <!--      cabeceras de la tabla-->
+      <div class="row border text-center">
+        <div class="col border">
+          <h6>NÚMERO DE ESCRITURA</h6>
+        </div>
+        <div class="col border">
+          <h6>TIPO DE PREDIO</h6>
+        </div>
+        <div class="col border">
+          <h6>CUENTA PREDIAL
+          </h6>
+        </div>
+        <div class="col border">
+          <h6>FECHA DE FIRMA DE LA OPERACIÓN
+          </h6>
+        </div>
+      </div>
+      <div class="row border">
 
-    Content 3
+        <div class="col border">
+          <div class="row justify-content-center">
+            <mat-form-field class="w-75" appearance="outline">
+              <input matInput>
+              <mat-label>#Escritura</mat-label>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="col border">
+          <div class="row justify-content-center">
+            <mat-form-field class="w-75" appearance="outline">
+              <input matInput>
+              <mat-label>#Predial</mat-label>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="col border">
+          <div class="row justify-content-center">
+            <mat-form-field class="w-100 p-1" appearance="outline">
+              <input matInput>
+              <mat-label>#Cuenta</mat-label>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="col border">
+          <div class="row justify-content-center">
+            <mat-form-field class="w-100 p-1" appearance="outline">
+              <input matInput type="date">
+              <mat-label>Fecha</mat-label>
+            </mat-form-field>
+          </div>
+        </div>
+
+      </div>
+      <!--      fin de primera seccion-->
+      <div class="row border text-center">
+        <div class="col border">
+          <h6>TIPO DE OPERACIÓN </h6>
+        </div>
+        <div class="col border">
+          <h6>VALOR CATASTRAL </h6>
+        </div>
+        <div class="col border">
+          <h6>VALOR DE OPERACIÓN
+          </h6>
+        </div>
+      </div>
+      <div class="row border">
+
+        <div class="col border">
+          <div class="row justify-content-center">
+            <mat-form-field class="w-75" appearance="outline">
+              <input matInput>
+              <mat-label>#Tipo Operación</mat-label>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="col border">
+          <div class="row justify-content-center">
+            <mat-form-field class="w-75" appearance="outline">
+              <input matInput>
+              <mat-label>Valor Catrastal</mat-label>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="col border">
+          <div class="row justify-content-center">
+            <mat-form-field class="w-75" appearance="outline">
+              <input matInput>
+              <mat-label>Valor de Operación</mat-label>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <!--      fin de segunda seccion-->
+
+      <p class="mt-4">DATOS DE IDENTIFICACIÓN DEL FEDATARIO No. 1, DEL DISTRITO JUDICIAL DE TETELA.
+      </p>
+
+      <!--      datos de indetificacion federatario-->
+      <div class="row">
+        <div class="col ">
+
+          <div class="row border text-center">
+            <div class="col border">
+              <h6>APELLIDO PATERNO</h6>
+            </div>
+            <div class="col border">
+              <h6>APELLIDO MATERNO</h6>
+            </div>
+            <div class="col border">
+              <h6>NOMBRE(S)</h6>
+            </div>
+          </div>
+          <div class="row border">
+
+            <div class="col border">
+              <div class="row justify-content-center">
+                <mat-form-field class="w-75" appearance="outline">
+                  <input matInput>
+                  <mat-label>APELLIDO PATERNO</mat-label>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="col border">
+              <div class="row justify-content-center">
+                <mat-form-field class="w-75" appearance="outline">
+                  <input matInput>
+                  <mat-label>APELLIDO MATERNO</mat-label>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="col border">
+              <div class="row justify-content-center">
+                <mat-form-field class="w-75" appearance="outline">
+                  <input matInput>
+                  <mat-label>NOMBRE(S)</mat-label>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+
+          <!--segunda secccion-->
+          <div class="row border text-center">
+            <div class="col border">
+              <h6>DOMICILIO</h6>
+            </div>
+            <div class="col border">
+              <h6>CALLE </h6>
+            </div>
+            <div class="col border">
+              <h6>NÚMERO EXT </h6>
+            </div>
+            <div class="col border">
+              <h6>NÚMERO INT/LETRA</h6>
+            </div>
+          </div>
+
+          <div class="row border">
+
+            <div class="col-3 border">
+              <div class="row justify-content-center">
+                <mat-form-field class="w-75" appearance="outline">
+                  <input matInput>
+                  <mat-label>DOMICILIO</mat-label>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="col-3 border">
+              <div class="row justify-content-center">
+                <mat-form-field class="w-75" appearance="outline">
+                  <input matInput>
+                  <mat-label>CALLE</mat-label>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="col-3 border">
+              <div class="row justify-content-center">
+                <mat-form-field class="w-75" appearance="outline">
+                  <input matInput>
+                  <mat-label># EXT</mat-label>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="col-3 border">
+              <div class="row justify-content-center">
+                <mat-form-field class="w-75" appearance="outline">
+                  <input matInput>
+                  <mat-label># INTERO / LETRA</mat-label>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+
+          <!--tercera secccion-->
+          <div class="row border text-center">
+            <div class="col border">
+              <h6>COLONIA</h6>
+            </div>
+            <div class="col border">
+              <h6>LOCALIDAD</h6>
+            </div>
+            <div class="col border">
+              <h6>MUNICIPIO</h6>
+            </div>
+          </div>
+
+          <div class="row border">
+
+            <div class="col-4 border">
+              <div class="row justify-content-center">
+                <mat-form-field class="w-75" appearance="outline">
+                  <input matInput>
+                  <mat-label>COLONIA</mat-label>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="col-4 border">
+              <div class="row justify-content-center">
+                <mat-form-field class="w-75" appearance="outline">
+                  <input matInput>
+                  <mat-label>LOCALIDAD</mat-label>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="col-4 border">
+              <div class="row justify-content-center">
+                <mat-form-field class="w-75" appearance="outline">
+                  <input matInput>
+                  <mat-label>MUNICIPIO</mat-label>
+                </mat-form-field>
+              </div>
+            </div>
+
+          </div>
+
+          <!--cuarta secccion-->
+          <div class="row border text-center">
+            <div class="col border">
+              <h6>ENTIDAD FEDERATIVA</h6>
+            </div>
+            <div class="col border">
+              <h6>CÓDIGO POSTAL </h6>
+            </div>
+            <div class="col border">
+              <h6>TELÉFONO</h6>
+            </div>
+          </div>
+
+          <div class="row border">
+
+            <div class="col-4 border">
+              <div class="row justify-content-center">
+                <mat-form-field class="w-75" appearance="outline">
+                  <input matInput>
+                  <mat-label>ENTIDAD FEDERATIVA</mat-label>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="col-4 border">
+              <div class="row justify-content-center">
+                <mat-form-field class="w-75" appearance="outline">
+                  <input matInput>
+                  <mat-label>CÓDIGO POSTAL</mat-label>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="col-4 border">
+              <div class="row justify-content-center">
+                <mat-form-field class="w-75" appearance="outline">
+                  <input matInput>
+                  <mat-label>TELÉFONO
+                  </mat-label>
+                </mat-form-field>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+        <!--        sello federatario-->
+        <div class="col-4  w-100 border text-center">
+          <p class="text-black-50 mt-3">SELLO DEL FEDERATARIO</p>
+        </div>
+      </div>
+      <!--datos de del registro publico-->
+      <div class="row border bg-light align-content-center text-center mt-2" style="height: 60px">
+        <div class="col"><span class="w-100">DATOS DEL REGISTRO PÚBLICO</span></div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="row">
+            <div class="col-6 border">
+              <mat-form-field class="w-100">
+                <input matInput>
+                <mat-label>Partida</mat-label>
+              </mat-form-field>
+            </div>
+            <div class="col-6 border">
+              <mat-form-field class="w-100">
+                <input matInput type="date">
+                <mat-label>Fecha</mat-label>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="row">
+            <div class="col-4 border">
+              <mat-form-field class="w-100">
+                <input matInput>
+                <mat-label>Fojas</mat-label>
+              </mat-form-field>
+            </div>
+            <div class="col-4 border">
+              <mat-form-field class="w-100">
+                <input matInput>
+                <mat-label>Tomo</mat-label>
+              </mat-form-field>
+            </div>
+            <div class="col-4 border">
+              <mat-form-field class="w-100">
+                <input matInput>
+                <mat-label># Libro</mat-label>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="row">
+            <div class="col-6 border">
+              <mat-form-field class="w-100">
+                <input matInput>
+                <mat-label>Indice</mat-label>
+              </mat-form-field>
+            </div>
+
+            <div class="col-6 border">
+              <mat-form-field class="w-100">
+                <input matInput>
+                <mat-label>Valor</mat-label>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--      datos del registro publico end-->
+
+      <!--datos de de la operacion-->
+      <div class="row border bg-light align-content-center text-center mt-2" style="height: 60px">
+        <div class="col"><span class="w-100">DATOS DE LA OPERACIÓN</span></div>
+      </div>
+      <div class="row text-center align-content-center border h-100">
+        <div class="col border-right w-100 h-100">
+          <span class="w-100 h-100">RECTIFICACIÓN DE SUPERFICIE, MEDIDAS Y COLINDANCIAS.</span>
+        </div>
+
+        <div class="col-8 border-left w-100">
+          <div class="row justify-content-center">
+            <span>DESCRIPCIÓN DE LA OPERACION
+            </span>
+          </div>
+          <div class="row justify-content-center">
+            <mat-form-field class="w-100 m-1 h-auto" appearance="outline">
+              <textarea matInput></textarea>
+            </mat-form-field>
+          </div>
+        </div>
+
+      </div>
+      <!--      datos de la operacion end-->
+      <!--descripcion del inmueble-->
+      <div class="row border bg-light align-content-center text-center mt-2" style="height: 60px">
+        <div class="col"><span class="w-100">DESCRIPCIÓN DEL INMUEBLE</span></div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="row">
+            <div class="col border">
+              <mat-form-field class="w-100">
+                <input matInput>
+                <mat-label>Ubicación</mat-label>
+              </mat-form-field>
+            </div>
+            <div class="col border">
+              <mat-form-field class="w-100">
+                <input matInput>
+                <mat-label>Calle</mat-label>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="row">
+            <div class="col-4 border">
+              <mat-form-field class="w-100">
+                <input matInput>
+                <mat-label># Ext</mat-label>
+              </mat-form-field>
+            </div>
+            <div class="col-4 border">
+              <mat-form-field class="w-100">
+                <input matInput>
+                <mat-label>NÚMERO INT./LETRA</mat-label>
+              </mat-form-field>
+            </div>
+            <div class="col-4 border">
+              <mat-form-field class="w-100">
+                <input matInput>
+                <mat-label>COLONIA</mat-label>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!--descripcion del inmueble end-->
+
+      <!--      datos de indentificacion del contratante-->
+      <div class="row border bg-light align-content-center text-center mt-2" style="height: 60px">
+        <div class="col"><span class="w-100">DATOS DE IDENTIFICACIÓN DEL CONTRATANTE</span></div>
+      </div>
+      <div class="row text-center">
+        <div class="col-6 border">
+          <mat-form-field class="w-100">
+            <input matInput>
+            <mat-label>Nombre Completo</mat-label>
+          </mat-form-field>
+        </div>
+        <div class="col-6">
+          <div class="row">
+            <div class="col border">
+              <mat-form-field class="w-100">
+                <input matInput>
+                <mat-label>R.F.C</mat-label>
+              </mat-form-field>
+            </div>
+            <div class="col border">
+              <mat-form-field class="w-100">
+                <input matInput>
+                <mat-label>C.U.R.P</mat-label>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row border text-center">
+        <span class="w-100">Persona(s) Fisica(s)</span>
+      </div>
+      <div class="row">
+        <div class="col border">Apellido Paterno</div>
+        <div class="col border">Apellido Materno</div>
+        <div class="col border">Nombre(s) o Morales(Razon Social)</div>
+      </div>
+      <div class="row">
+        <mat-form-field class="w-100" appearance="outline">
+          <textarea matInput matTooltip="Llenar en este campo con el nombre de los partipantes"
+                    style="height: 80px"></textarea>
+          <mat-label>Datos de las personas Fisicas</mat-label>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <div class="row">
+
+            <div class="col-3 border">
+              <mat-form-field class="w-100">
+                <input matInput>
+                <mat-label>Calle</mat-label>
+              </mat-form-field>
+            </div>
+            <div class="col-3 border">
+              <mat-form-field class="w-100">
+                <input matInput>
+                <mat-label># Ext</mat-label>
+              </mat-form-field>
+            </div>
+            <div class="col-3 border">
+              <mat-form-field class="w-100">
+                <input matInput>
+                <mat-label>NÚMERO INT./LETRA</mat-label>
+              </mat-form-field>
+            </div>
+            <div class="col-3 border">
+              <mat-form-field class="w-100">
+                <input matInput>
+                <mat-label>COLONIA</mat-label>
+              </mat-form-field>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="row">
+
+            <div class="col-3 border">
+              <mat-form-field class="w-100">
+                <input matInput>
+                <mat-label>LOCALIDAD</mat-label>
+              </mat-form-field>
+            </div>
+            <div class="col-3 border">
+              <mat-form-field class="w-100">
+                <input matInput>
+                <mat-label>MUNICIPIO</mat-label>
+              </mat-form-field>
+            </div>
+            <div class="col-3 border">
+              <mat-form-field class="w-100">
+                <input matInput>
+                <mat-label>ENTIDAD FEDERATIVA</mat-label>
+              </mat-form-field>
+            </div>
+            <div class="col-3 border">
+              <mat-form-field class="w-100">
+                <input matInput>
+                <mat-label>CÓDIGO</mat-label>
+              </mat-form-field>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <!--      datos de indentificacion del contratante end-->
+      <!--      liquidacion de derecho estatales-->
+      <div class="row mt-3">
+        <div class="col-8">
+          <div class="row border bg-light align-content-center text-center" style="height: 60px">
+            <div class="col"><span class="w-100">LIQUIDACIÓN DE DERECHOS ESTATALES </span></div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="row border bg-light align-content-center text-center" style="height: 60px">
+            <div class="col"><span class="w-100">MODIFICACIÓN A LA LIQUIDACIÓN</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="row border">
+        <div class="col-8">
+          <div class="row justify-content-center">
+            <div class="col-2">
+              <mat-form-field class="w-100">
+                <input matInput>
+                <mat-label>ARTÍCULO</mat-label>
+              </mat-form-field>
+            </div>
+            <div class="col-2">
+              <mat-form-field class="w-100">
+                <input matInput>
+                <mat-label>APARTADO</mat-label>
+              </mat-form-field>
+            </div>
+            <div class="col-2">
+              <mat-form-field class="w-100">
+                <input matInput>
+                <mat-label>FRACC. INCISO</mat-label>
+              </mat-form-field>
+            </div>
+            <div class="col-2">
+              <mat-form-field class="w-100">
+                <input matInput>
+                <mat-label>CUOTA</mat-label>
+              </mat-form-field>
+            </div>
+            <div class="col-2">
+              <mat-form-field class="w-100">
+                <input matInput>
+                <mat-label>IMPORTE</mat-label>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="col-4 h-100">
+          <div class="row" style="height: 80px">
+            <div class="col-8 border h-100">
+
+            </div>
+            <div class="col-4 border h-100">
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--      liquidacion de derecho estatales end-->
+      <!--      last seccion-->
+      <div class="row text-center align-content-center" style="height: 150px">
+        <div class="col border h-100">
+          <span>(16)
+DESCRIPCIÓN DEL MOVIMIENTO PREDIAL
+CAUSA ALTA CON LA CUENTA R-
+PROVIENE DE LA CUENTA R-4678</span>
+        </div>
+        <div class="col border h-100">
+          <span>(17)
+FIPRMA DEL FEDATARIO PÚBLICO</span>
+        </div>
+        <div class="col border h-100">
+          <span>(18)
+SELLO DE LA OFICINA RECAUDADORA Y DE ASISTENCIA
+AL CONTRIBUYENTE</span>
+        </div>
+      </div>
+      <!--      last seccion end-->
+
+
+    </div>
+    <div class="row justify-content-center container mt-1">
+      <div class="col">
+        <button class="bg-danger w-100 text-white" mat-raised-button>Borrar</button>
+      </div>
+      <div class="col">
+        <button class="bg-primary w-100 text-white" mat-raised-button>Guardar</button>
+      </div>
+    </div>
   </mat-tab>
 
   <mat-tab>
