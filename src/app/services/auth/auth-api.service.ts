@@ -8,8 +8,8 @@ export class AuthApiService {
   private notaryHost = 'http://notary.test/oauth/token';
   private requestBody = {
     grant_type: 'client_credentials',
-    client_id: 1,
-    client_secret: 'LNxFKvTLk77C7f9W0sIh6IwJ9RGLzKIHp8cMMnT7'
+    client_id: 3,
+    client_secret: 'ldY0IdQhvuV6vKhCFjRalxfRgIGFUfm4cqZZRvrZ'
   };
 
 
