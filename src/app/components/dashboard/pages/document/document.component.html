@@ -2470,15 +2470,87 @@ AL CONTRIBUYENTE</span>
     <ng-template mat-tab-label>
       Caratula
     </ng-template>
+    <div class="container mt-4">
+      <p class="text-justify">PRIMERO, DE LA ESCRITURA DE PROTOCOLIZACIÓN, DEL ACTA DE ASAMBLEA GENERAL EXTRAORDINARIA,
+        DE LA PERSONA
+        JURÍDICA
+        “CUAUHTAPANALOYAN”, SOCIEDAD DE PRODUCCIÓN RURAL DE RESONSABILIDAD ILIMITADA, A SOLICITUD DE LOS SEÑORES PASCUAL
+        BAUTISTA HERNÁNDEZ, JUAN FRANCISCO MARTÍNEZ TZAPOT Y JOSÉ DE JESÚS ANTONIO BAUTISTA, CON EL CARÁCTER DE
+        PRESIDENTE, SECRETARIO Y TESORERO, RESPECTIVAMENTE DEL CONSEJO DE ADMINISTRACIÓN.</p>
+      <div class="row justify-content-center mt-1">
+        <mat-form-field class="w-75">
+          <input matInput>
+          <mat-label>#Numero de volumen</mat-label>
+        </mat-form-field>
+      </div>
+      <div class="row justify-content-center mt-1">
+        <mat-form-field class="w-75">
+          <input matInput>
+          <mat-label>#Numero de instrumento</mat-label>
+        </mat-form-field>
+      </div>
+      <div class="row justify-content-center mt-1">
+        <mat-form-field class="w-75">
+          <input matInput type="date">
+          <mat-label>Fecha</mat-label>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row justify-content-center container mt-1">
+      <div class="col">
+        <button class="bg-danger w-100 text-white" mat-raised-button>Borrar</button>
+      </div>
+      <div class="col">
+        <button class="bg-primary w-100 text-white" mat-raised-button>Guardar</button>
+      </div>
+    </div>
 
-    Content 3
   </mat-tab>
 
   <mat-tab>
     <ng-template mat-tab-label>
       Certificación
     </ng-template>
-
-    Content 3
+    <div class="container mt-4">
+      <p class="text-center">
+        ISAI GRACIDA MARTINEZ, NOTARIO PÚBLICO TITULAR DE LA NOTARÍA NÚMERO UNO, DEL DISTRITO JUDICIAL DE TETELA, CON
+        RESIDENCIA EN LA CIUDAD DE TETELA DE OCAMPO, PUEBLA, CERTIFICO: Que he tenido a la vista los documentos
+        originales que conforman el legajo el apéndice de comprobantes del volumen
+        <mat-form-field>
+          <input matInput>
+          <mat-label># Volumen</mat-label>
+        </mat-form-field>
+        , del protocolo de ésta Notaría a mi cargo, de donde se deduce ésta copia fiel que consta de
+        <mat-form-field>
+          <input matInput>
+          <mat-label>Hojas</mat-label>
+        </mat-form-field>
+        hojas útiles, que expido para documentar el primer testimonio del instrumento número
+        <mat-form-field>
+          <input matInput>
+          <mat-label>Número</mat-label>
+        </mat-form-field>
+        . Doy fe.
+        Heroica Ciudad de Tetela de Ocampo, Puebla, a los
+        <mat-form-field>
+          <input matInput type="date">
+          <mat-label>Fecha</mat-label>
+        </mat-form-field>
+        .
+      </p>
+      <p class="text-center">EL NOTARIO PUBLICO NUMERO UNO
+        DEL DISTRITO JUDICIAL DE TETELA
+        EN EJERCICIO:</p>
+      <p class="text-center">LIC. ISAI GRACIDA MARTINEZ.
+      </p>
+    </div>
+    <div class="row justify-content-center container mt-1">
+      <div class="col">
+        <button class="bg-danger w-100 text-white" mat-raised-button>Borrar</button>
+      </div>
+      <div class="col">
+        <button class="bg-primary w-100 text-white" mat-raised-button>Guardar</button>
+      </div>
+    </div>
   </mat-tab>
 </mat-tab-group>
