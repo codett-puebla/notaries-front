@@ -13,6 +13,8 @@ export class AuthService {
   private notaryHost = 'http://notary.test/getOauth';
   private headers = new HttpHeaders();
   private tokenUser: string;
+  private isLogged: boolean;
+
   constructor(
     private _http: HttpClient,
     private _authApi: AuthApiService
@@ -26,13 +28,18 @@ export class AuthService {
 
     return this._http.post(this.notaryHost,
       user,
-      {headers : this.headers}
-      ).pipe(map(
+      {headers: this.headers}
+    ).pipe(map(
       response => {
         this.saveTokenUser(response);
         return response;
       }
     ));
+  }
+
+  logout() {
+    this._authApi.setStatusLogout();
+    localStorage.clear();
   }
 
   saveTokenUser(response) {
@@ -41,6 +48,26 @@ export class AuthService {
     localStorage.setItem('expires_inUser', response.token.expires_in);
     localStorage.setItem('access_tokenUser', response.token.access_token);
     this.tokenUser = response.token.access_token;
+  }
+
+  checkStatusLoggedMaterlogin(): boolean {
+    return this._authApi.getStatusLoggedMasterLoginApi();
+  }
+
+  checkClosedSession(): boolean {
+    return this._authApi.getStatusClosedSession();
+  }
+
+  restartTokenMasterlogin() {
+    this._authApi.login();
+  }
+
+  islogged(): boolean {
+    return this.isLogged;
+  }
+
+  setLogged(isLogged: boolean) {
+    this.isLogged = isLogged;
   }
 
 }

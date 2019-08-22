@@ -20,14 +20,17 @@ export class LoginComponent implements OnInit {
     private _auth: AuthService,
     private _router: Router
   ) {
+
   }
 
   ngOnInit() {
+    if (this._auth.checkClosedSession()) {
+      this._auth.restartTokenMasterlogin();
+    }
   }
 
   login(form: NgForm) {
-
-    if (this.validateForm(form)) {
+    if (this.validateForm(form) || !this.isLoggedMasterLogin()) {
       return;
     }
 
@@ -37,21 +40,21 @@ export class LoginComponent implements OnInit {
       text: 'Iniciando sesión, espere por favor...'
     });
     Swal.showLoading();
-
-
     this._auth.login(this.user).subscribe(
       response => {
         Swal.close();
         this.saveDataUser(response['user']);
         this._router.navigateByUrl('/dashboard');
+        this._auth.setLogged(true);
       },
       error => {
         Swal.close();
         console.log(error);
         let message = '';
-        if (error.error.code == 401) {
+        this._auth.setLogged(false);
+        if (error.error.code == 401 || error.status == 404) {
           message = 'Revisa tu correo o contraseña, alguno es incorrecto';
-        }else{
+        } else {
           message = 'Ocurrio un error desconocido, intenta mas tarde';
         }
         Swal.fire({
@@ -65,7 +68,7 @@ export class LoginComponent implements OnInit {
   }
 
   validateForm(form: NgForm): boolean {
-    return false;
+    return form.invalid;
   }
 
   saveDataUser(user) {
@@ -73,5 +76,18 @@ export class LoginComponent implements OnInit {
     localStorage.setItem('name', user.name);
     localStorage.setItem('user_type', user.user_type);
     localStorage.setItem('create_time', user.create_time);
+  }
+
+  isLoggedMasterLogin(): boolean {
+    console.log('status --->', this._auth.checkStatusLoggedMaterlogin());
+    if (!this._auth.checkStatusLoggedMaterlogin()) {
+      Swal.fire({
+        type: 'error',
+        title: 'Error en el inicio de sesión',
+        text: 'Ocurrio un error en los servidores. Intente mas tarde'
+      });
+    }
+
+    return this._auth.checkStatusLoggedMaterlogin();
   }
 }
