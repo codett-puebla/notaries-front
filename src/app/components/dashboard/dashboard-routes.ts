@@ -4,6 +4,7 @@ import {NewTransactComponent} from './pages/new-transact/new-transact.component'
 import {ExternalLinksComponent} from './pages/external-links/external-links.component';
 import {CalendarComponent} from './pages/calendar/calendar.component';
 import {DocumentComponent} from './pages/document/document.component';
+import {ProcedureComponent} from './pages/procedure/procedure.component';
 
 
 export const DASHBOARD_ROUTES: Routes = [
@@ -12,5 +13,6 @@ export const DASHBOARD_ROUTES: Routes = [
   {path: 'external/:external', component: ExternalLinksComponent},
   {path: 'calendar', component: CalendarComponent},
   {path: 'documents', component: DocumentComponent},
+  {path: 'catalogProcedure', component: ProcedureComponent},
   {path: '**', pathMatch: 'full', redirectTo: 'budget'}
 ];

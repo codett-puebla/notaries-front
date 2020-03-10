@@ -1,5 +1,5 @@
 <div class="formContentParent">
-  <div class="wrapper fadeInDown" >
+  <div class="wrapper fadeInDown">
     <div class="formContent">
       <!-- Icon -->
       <div class="fadeIn first">
@@ -10,13 +10,13 @@
       <form (ngSubmit)="login(f)" #f="ngForm"
             class="login100-form validate-form">
         <input type="email"
-          id="email"
-          class="fadeIn second inputLogin"
-          name="username"
-          placeholder="Usuario"
-          required
-          email
-          [(ngModel)]="user.username"
+               id="email"
+               class="fadeIn second inputLogin"
+               name="username"
+               placeholder="Usuario"
+               required
+               email
+               [(ngModel)]="user.username"
         >
         <br>
         <span
@@ -45,7 +45,7 @@
           La contraseña debe contener por lo menos 6 caracteres
         </span>
 
-        <button type="submit" style="width: 86%" class="btn btn-outline-primary m-3"> Login </button>
+        <button type="submit" style="width: 86%" class="btn btn-outline-primary m-3"> Login</button>
 
         <a style="width: 86%" class="btn btn-outline-primary m-3" [routerLink]="['/dashboard']"> Entrar </a>
       </form>

@@ -10,7 +10,8 @@ import {
   MatExpansionModule,
   MatFormFieldModule,
   MatIconModule,
-  MatInputModule,
+  MatInputModule, MatPaginatorModule, MatProgressSpinnerModule, MatSortModule,
+  MatTableModule,
   MatTabsModule,
   MatTooltipModule
 } from '@angular/material';
@@ -28,6 +29,10 @@ import localeEs from '@angular/common/locales/es';
 import {ContextMenuModule} from 'ngx-contextmenu';
 import {EventoComponent} from './calendar/evento/evento.component';
 import {DocumentComponent} from './document/document.component';
+import {ProcedureComponent} from './procedure/procedure.component';
+import {ProcedureFormComponent} from './procedure/procedure-form/procedure-form.component';
+import {DigitOnlyDirective} from '../../../Directives/DigitOnlyDirective';
+import {BackButtonDirective} from '../../../Directives/back-button.directive';
 
 registerLocaleData(localeEs);
 
@@ -40,7 +45,11 @@ registerLocaleData(localeEs);
     CalendarComponent,
     HeaderCalendarComponent,
     EventoComponent,
-    DocumentComponent
+    DocumentComponent,
+    ProcedureComponent,
+    ProcedureFormComponent,
+    DigitOnlyDirective,
+    BackButtonDirective
   ],
   exports: [
     CotizacionComponent,
@@ -51,6 +60,7 @@ registerLocaleData(localeEs);
   ],
   imports: [
     MatAutocompleteModule,
+    MatTableModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
@@ -71,6 +81,9 @@ registerLocaleData(localeEs);
     MatTabsModule,
     MatTooltipModule,
     MatDividerModule,
+    MatSortModule,
+    MatProgressSpinnerModule,
+    MatPaginatorModule,
   ],
   entryComponents: [
     EventoComponent

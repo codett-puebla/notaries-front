@@ -14,9 +14,9 @@ import {NavBarComponent} from './components/shared/nav-bar/nav-bar.component';
 import {DashboardComponent} from './components/dashboard/dashboard.component';
 // Angular Material and fonts
 import {AngularFontAwesomeModule} from 'angular-font-awesome';
-import {MaterialModule} from './components/dashboard/pages/material.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ContextMenuModule} from 'ngx-contextmenu';
+import {MaterialModule} from './components/dashboard/pages/material.module';
 
 @NgModule({
   declarations: [
