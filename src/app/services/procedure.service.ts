@@ -36,19 +36,19 @@ export class ProcedureService {
     return this.http.put(`${this.URL_PATH}/${id}`, data);
   }
 
-  getUserAuthenticated(): Observable<any> {
-    return this.http.get(`${URL_BASE}authenticated-user`);
-  }
-
-  getAreaUser(): Observable<any> {
-    return this.http.get(`${URL_BASE}area-user`).pipe(map((data: any) => data.data.area_users));
-  }
-
-  getAreaUsers(body: any[]): Observable<any> {
-    const array: any[] = [];
-    for (const item of body) {
-      array.push({id: item.id});
-    }
-    return this.http.post(`${URL_BASE}areas-users`, {areas: array}).pipe(map((data: any) => data.data));
-  }
+  // getUserAuthenticated(): Observable<any> {
+  //   return this.http.get(`${URL_BASE}authenticated-user`);
+  // }
+  //
+  // getAreaUser(): Observable<any> {
+  //   return this.http.get(`${URL_BASE}area-user`).pipe(map((data: any) => data.data.area_users));
+  // }
+  //
+  // getAreaUsers(body: any[]): Observable<any> {
+  //   const array: any[] = [];
+  //   for (const item of body) {
+  //     array.push({id: item.id});
+  //   }
+  //   return this.http.post(`${URL_BASE}areas-users`, {areas: array}).pipe(map((data: any) => data.data));
+  // }
 }
