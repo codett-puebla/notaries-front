@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {URL_BASE} from './ConfigURL';
 import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -20,11 +19,11 @@ export class ProcedureService {
   }
 
   getAll(): Observable<any> {
-    return this.http.get(this.URL_PATH).pipe(map((data: any) => data.data));
+    return this.http.get(this.URL_PATH + '?idCompany=1')/*.pipe(map((data: any) => data.data))*/;
   }
 
   getById(id: number): Observable<any> {
-    return this.http.get(`${this.URL_PATH}/${id}`).pipe(map((data: any) => data.data));
+    return this.http.get(`${this.URL_PATH}/${id}`)/*.pipe(map((data: any) => data.data))*/;
   }
 
   delete(id: any): Observable<any> {

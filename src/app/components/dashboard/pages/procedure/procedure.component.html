@@ -30,7 +30,6 @@
         <!--    <ng-container matColumnDef="position">-->
         <!--      <mat-header-cell *matHeaderCellDef mat-sort-header> No.</mat-header-cell>-->
         <!--      <mat-cell *matCellDef="let element">-->
-        <!--        <span class="mobile-label">No. :</span>-->
         <!--        {{element.position}} </mat-cell>-->
         <!--    </ng-container>-->
 
@@ -38,41 +37,30 @@
         <ng-container matColumnDef="id">
           <mat-header-cell *matHeaderCellDef mat-sort-header> ID</mat-header-cell>
           <mat-cell *matCellDef="let row">
-            <span class="mobile-label">ID:</span>
             {{row.id}} </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="name">
+        <ng-container matColumnDef="type">
           <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre</mat-header-cell>
           <mat-cell *matCellDef="let row">
-            <span class="mobile-label">Nombre:</span>
-            {{row.name}}</mat-cell>
+            {{row.type}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="description">
           <mat-header-cell *matHeaderCellDef mat-sort-header> Descripción</mat-header-cell>
           <mat-cell *matCellDef="let row">
-            <span class="mobile-label">Descripción:</span>
             {{row.description}}</mat-cell>
         </ng-container>
-        <ng-container matColumnDef="user_coordinator.name">
-          <mat-header-cell *matHeaderCellDef mat-sort-header> Encargado de Área</mat-header-cell>
+        <ng-container matColumnDef="cost">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Costo</mat-header-cell>
           <mat-cell *matCellDef="let row">
-            <span class="mobile-label">Encargado de Área:</span>
-            {{row.user_coordinator?.name}}</mat-cell>
-        </ng-container>
-        <ng-container matColumnDef="area_father.name">
-          <mat-header-cell *matHeaderCellDef mat-sort-header> Área Superior</mat-header-cell>
-          <mat-cell *matCellDef="let row">
-            <span class="mobile-label">Área Superior:</span>
-            {{row.area_father?.name}}</mat-cell>
+            {{row.cost}}</mat-cell>
         </ng-container>
 
         <!-- Action Columns Column -->
         <ng-container matColumnDef="actions">
           <mat-header-cell *matHeaderCellDef> Acciones</mat-header-cell>
           <mat-cell *matCellDef="let row">
-            <span class="mobile-label">Acciones:</span>
             <button (click)="edit(row)" type="button" mat-mini-fab class="bg-success mr-1">
               <mat-icon>edit</mat-icon>
             </button>

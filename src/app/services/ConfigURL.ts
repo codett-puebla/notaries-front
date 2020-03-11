@@ -1,5 +1,5 @@
 // export const URL_BASE = 'http://controlapi.seguimientobienestar.com.mx/api/';
-export const URL_BASE = 'http://localhost/notary/api/';
+export const URL_BASE = 'http://localhost/notary/';
 
 
 export const CLIENT_ID = 2;

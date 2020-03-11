@@ -15,7 +15,7 @@ import * as _ from 'lodash';
   styleUrls: ['./procedure.component.css']
 })
 export class ProcedureComponent implements OnInit, OnDestroy {
-  displayedColumns: string[] = ['id', 'name', 'description', 'area_father.name', 'user_coordinator.name', 'actions'];
+  displayedColumns: string[] = ['id', 'type', 'description', 'cost', 'actions'];
   dataSource: MatTableDataSource<ProcedureModel>;
   dataCollection: ProcedureModel[] = [];
   isLoading = false;

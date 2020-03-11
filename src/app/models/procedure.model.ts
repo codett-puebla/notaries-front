@@ -1,6 +1,6 @@
 export class ProcedureModel {
   id: number;
-  type: number;
+  type: string;
   description: string;
   cost: number;
   idUser: number;
