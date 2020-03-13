@@ -35,7 +35,6 @@ export class ProcedureFormComponent implements OnInit {
             console.log(response);
             this.form.get('type').setValue(this.data.type);
             this.form.get('description').setValue(this.data.description);
-            this.form.get('cost').setValue(this.data.cost);
           }
         );
     }
