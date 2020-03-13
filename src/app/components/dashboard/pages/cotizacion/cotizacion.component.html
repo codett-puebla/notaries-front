@@ -2,12 +2,13 @@
   <form [formGroup]="myForm" (ngSubmit)="submit()">
     <div class="form-group">
 
+
       <mat-form-field class="w-100">
-        <input type="text" placeholder="Seleccione un tramité" matInput formControlName="inputTramite"
-               [matAutocomplete]="auto">
-        <mat-autocomplete #auto="matAutocomplete">
-          <mat-option *ngFor="let tramite of filteredTramites | async" [value]="tramite">
-            {{tramite}}
+        <mat-label>Seleccionar Trámite</mat-label>
+        <input type="text" matInput [formControl]="inputProcedure" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+          <mat-option *ngFor="let procedure of filteredProcedures | async" [value]="procedure">
+            {{procedure.type}}
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>

@@ -1,7 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormArray, FormControl, FormGroup} from '@angular/forms';
 import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
+import {debounceTime, map, startWith} from 'rxjs/operators';
+import {ProcedureService} from '../../../../services/procedure.service';
+import {ProcedureModel} from '../../../../models/procedure.model';
 
 @Component({
   selector: 'app-cotizacion',
@@ -10,17 +12,17 @@ import {map, startWith} from 'rxjs/operators';
 })
 export class CotizacionComponent implements OnInit {
   myForm: FormGroup;
-  inputTramite = new FormControl();
+  inputProcedure = new FormControl();
   // opciones a seleccionar
-  options: string[] = ['One', 'Two', 'Three'];
+  procedures: ProcedureModel[] = [];
   filteredOptions: Observable<string[]>[] = [];
-  filteredTramites: any = [];
+  filteredProcedures: any = [];
   costTotal = 0;
 
-  constructor() {
+  constructor(public procedureService: ProcedureService) {
     this.myForm = new FormGroup(
       {
-        inputTramite: this.inputTramite,
+        inputProcedure: this.inputProcedure,
         arrayCost: new FormArray([
           new FormGroup({
             typeCost: new FormControl(''),
@@ -29,27 +31,38 @@ export class CotizacionComponent implements OnInit {
         ])
       }
     );
+    this.procedureService.getAll().subscribe(
+      response => {
+        this.procedures = response;
+      }
+    );
+
     this.manageArrayCostControl(0);
-    this.inputTramite.valueChanges.subscribe(
+    this.inputProcedure.valueChanges.subscribe(
       () => {
         (this.myForm.controls.arrayCost as FormArray).clear();
-        this.addNewCost();
+        // this.addNewCost();
       }
     );
   }
 
   ngOnInit() {
-    this.filteredTramites = this.inputTramite.valueChanges
+    this.filteredProcedures = this.inputProcedure.valueChanges
       .pipe(
         startWith(''),
-        map(value => this._filter(value))
+        debounceTime(300),
+        map(value => typeof value === 'string' ? value : value.type),
+        map((filter: string) => {
+          return filter ? this._filter(filter) : this.procedures.slice();
+        })
       );
   }
 
   // metodo de filtrado
-  private _filter(value: string): string[] {
+  private _filter(value: string): ProcedureModel[] {
+    console.log(value);
     const filterValue = value.toLowerCase();
-    return this.options.filter(option => option.toLowerCase().includes(filterValue));
+    return this.procedures.filter(procedure => procedure.type.toLowerCase().includes(filterValue));
   }
 
   submit() {
@@ -101,5 +114,9 @@ export class CotizacionComponent implements OnInit {
     } else {
       this.costTotal -= 1;
     }
+  }
+
+  displayFn(procedure?: ProcedureModel): string | undefined {
+    return procedure ? procedure.type : undefined;
   }
 }
