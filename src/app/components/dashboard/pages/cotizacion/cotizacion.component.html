@@ -5,7 +5,7 @@
       <mat-form-field class="w-100">
         <mat-label>Seleccionar Trámite</mat-label>
         <input type="text" matInput [formControl]="inputProcedure" [matAutocomplete]="auto">
-        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFnProcedure">
           <mat-option *ngFor="let procedure of filteredProcedures | async" [value]="procedure">
             {{procedure.type}}
           </mat-option>
@@ -52,10 +52,9 @@
 
                           <input type="text" placeholder="Seleccione costo" matInput [matAutocomplete]="autoC"
                                  formControlName="typeCost">
-
-                          <mat-autocomplete #autoC="matAutocomplete">
-                            <mat-option *ngFor="let option of filteredOptions[i] | async" [value]="option">
-                              {{option}}
+                          <mat-autocomplete #autoC="matAutocomplete" [displayWith]="displayFnCost">
+                            <mat-option *ngFor="let cost of filteredCost[i] | async" [value]="cost">
+                              {{cost.name}}
                             </mat-option>
                           </mat-autocomplete>
                         </mat-form-field>

@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {FormArray, FormControl, FormGroup} from '@angular/forms';
-import {Observable} from 'rxjs';
 import {debounceTime, map, startWith} from 'rxjs/operators';
 import {ProcedureService} from '../../../../services/procedure.service';
 import {ProcedureModel} from '../../../../models/procedure.model';
+import {CostService} from '../../../../services/cost.service';
+import {CostModel} from '../../../../models/cost.model';
 
 @Component({
   selector: 'app-cotizacion',
@@ -15,11 +16,12 @@ export class CotizacionComponent implements OnInit {
   inputProcedure = new FormControl();
   // opciones a seleccionar
   procedures: ProcedureModel[] = [];
-  filteredOptions: Observable<string[]>[] = [];
+  filteredCost: any[] = [];
   filteredProcedures: any = [];
   costTotal = 0;
+  costs: CostModel[] = [];
 
-  constructor(public procedureService: ProcedureService) {
+  constructor(public procedureService: ProcedureService, public costService: CostService) {
     this.myForm = new FormGroup(
       {
         inputProcedure: this.inputProcedure,
@@ -36,6 +38,12 @@ export class CotizacionComponent implements OnInit {
         this.procedures = response;
       }
     );
+    this.costService.getAll().subscribe(
+      response => {
+        console.log(response);
+        this.costs = response;
+      }
+    );
 
     this.manageArrayCostControl(0);
   }
@@ -47,16 +55,22 @@ export class CotizacionComponent implements OnInit {
         debounceTime(300),
         map(value => typeof value === 'string' ? value : value.type),
         map((filter: string) => {
-          return filter ? this._filter(filter) : this.procedures.slice();
+          return filter ? this._filterProcedure(filter) : this.procedures.slice();
         })
       );
   }
 
   // metodo de filtrado
-  private _filter(value: string): ProcedureModel[] {
+  private _filterProcedure(value: string): ProcedureModel[] {
     console.log(value);
     const filterValue = value.toLowerCase();
     return this.procedures.filter(procedure => procedure.type.toLowerCase().includes(filterValue));
+  }
+
+  private _filterCost(value: string): CostModel[] {
+    console.log(value);
+    const filterValue = value.toLowerCase();
+    return this.costs.filter(costs => costs.name.toLowerCase().includes(filterValue));
   }
 
   submit() {
@@ -80,7 +94,7 @@ export class CotizacionComponent implements OnInit {
     if (this.myForm.get('arrayCost').controls.length > 1) {
       console.log('eliminando');
       (this.myForm.controls.arrayCost as FormArray).removeAt(i);
-      this.filteredOptions.splice(i, 1);
+      this.filteredCost.splice(i, 1);
       this.calculateCost(false);
     }
   }
@@ -88,11 +102,13 @@ export class CotizacionComponent implements OnInit {
   manageArrayCostControl(index: number) {
     const arrayControl = this.myForm.get('arrayCost') as FormArray;
     // @ts-ignore
-    this.filteredOptions[index] = arrayControl.at(index).controls.typeCost.valueChanges
+    this.filteredCost[index] = arrayControl.at(index).controls.typeCost.valueChanges
       .pipe(
         startWith(''),
-        map((value: any) => {
-          return this._filter(value);
+        debounceTime(300),
+        map((value: any) => typeof value === 'string' ? value : value.name),
+        map((filter: string) => {
+          return filter ? this._filterCost(filter) : this.costs.slice();
         })
       );
     arrayControl.at(index).valueChanges.subscribe(
@@ -110,7 +126,11 @@ export class CotizacionComponent implements OnInit {
     }
   }
 
-  displayFn(procedure?: ProcedureModel): string | undefined {
+  displayFnProcedure(procedure?: ProcedureModel): string | undefined {
     return procedure ? procedure.type : undefined;
+  }
+
+  displayFnCost(costModel?: CostModel): string | undefined {
+    return costModel ? costModel.name : undefined;
   }
 }
