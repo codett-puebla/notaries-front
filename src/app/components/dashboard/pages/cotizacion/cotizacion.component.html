@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <form [formGroup]="myForm" (ngSubmit)="submit()">
+  <form [formGroup]="myForm" (ngSubmit)="submit()" autocomplete="off">
     <div class="form-group">
 
       <mat-form-field class="w-100">
@@ -10,6 +10,7 @@
             {{procedure.type}}
           </mat-option>
         </mat-autocomplete>
+        <mat-error>{{getMessageError('procedure_id')}}</mat-error>
       </mat-form-field>
 
       <mat-accordion>
@@ -27,7 +28,7 @@
           <!--    body-->
           <div>
             <!--        body section costType price-->
-            <div formArrayName="arrayCost">
+            <div formArrayName="costs">
 
               <!-- accion para añadir-->
               <div class="row justify-content-end margen">
@@ -41,7 +42,7 @@
 
               <!--        Seccion para escoger costo y setear precio-->
               <div class="row justify-content-center"
-                   *ngFor="let cost of myForm.controls.arrayCost['controls']; let i = index">
+                   *ngFor="let cost of myForm.controls.costs['controls']; let i = index">
                 <div class="col">
                   <div [formGroupName]="i.toString()" class="row margen">
                     <!--costType-->
@@ -51,7 +52,7 @@
                         <mat-form-field class="w-75">
 
                           <input type="text" placeholder="Seleccione costo" matInput [matAutocomplete]="autoC"
-                                 formControlName="typeCost">
+                                 formControlName="cost">
                           <mat-autocomplete #autoC="matAutocomplete" [displayWith]="displayFnCost">
                             <mat-option *ngFor="let cost of filteredCost[i] | async" [value]="cost">
                               {{cost.name}}
@@ -65,7 +66,7 @@
                     <div class="col pr-0 pl-0">
                       <div class="row justify-content-center">
                         <mat-form-field class="w-75">
-                          <input matInput placeholder="Precio" formControlName="price">
+                          <input matInput placeholder="Precio" formControlName="price" digitOnly>
                         </mat-form-field>
                       </div>
                     </div>
@@ -103,8 +104,9 @@
     </div>
 
     <div class="row justify-content-center margen">
-      <div class="col-3">
-        <button class="btn-block" type="submit" mat-raised-button color="primary"><i class="fa fa-file"> Generar
+      <div class="col-4">
+        <button class="btn-block" type="submit" mat-raised-button color="primary" [disabled]="myForm.invalid"><i
+          class="fa fa-file"> Generar
           Tramite</i>
         </button>
       </div>

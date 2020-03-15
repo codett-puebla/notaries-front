@@ -1,10 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import {FormArray, FormControl, FormGroup} from '@angular/forms';
+import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
 import {debounceTime, map, startWith} from 'rxjs/operators';
 import {ProcedureService} from '../../../../services/procedure.service';
 import {ProcedureModel} from '../../../../models/procedure.model';
 import {CostService} from '../../../../services/cost.service';
 import {CostModel} from '../../../../models/cost.model';
+import {messageErrorValidation} from '../../../../Utils/ValidatorsHelper';
+import {QuotationService} from '../../../../services/quotation.service';
+import {MessageHelper} from '../../../../Utils/MessageHelper';
 
 @Component({
   selector: 'app-cotizacion',
@@ -13,7 +16,7 @@ import {CostModel} from '../../../../models/cost.model';
 })
 export class CotizacionComponent implements OnInit {
   myForm: FormGroup;
-  inputProcedure = new FormControl();
+  inputProcedure = new FormControl('', Validators.required);
   // opciones a seleccionar
   procedures: ProcedureModel[] = [];
   filteredCost: any[] = [];
@@ -21,14 +24,16 @@ export class CotizacionComponent implements OnInit {
   costTotal = 0;
   costs: CostModel[] = [];
 
-  constructor(public procedureService: ProcedureService, public costService: CostService) {
+  constructor(public procedureService: ProcedureService, public costService: CostService,
+              public quotationService: QuotationService
+  ) {
     this.myForm = new FormGroup(
       {
-        inputProcedure: this.inputProcedure,
-        arrayCost: new FormArray([
+        procedure_id: this.inputProcedure,
+        costs: new FormArray([
           new FormGroup({
-            typeCost: new FormControl(''),
-            price: new FormControl(''),
+            cost: new FormControl('', Validators.required),
+            price: new FormControl('', Validators.required),
           })
         ])
       }
@@ -74,35 +79,44 @@ export class CotizacionComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.myForm);
+    this.myForm.value.idCompany = 1;
+    this.myForm.value.procedure_id = this.myForm.value.procedure_id.id;
+    console.log(this.myForm.value);
+    this.quotationService.add(this.myForm.value).subscribe(
+      response => {
+        MessageHelper.successMessage('Añadido', 'Se genero cotización con exito');
+      }, error => {
+        MessageHelper.errorMessage('Ocurrio un error, intente de nuevamente');
+        console.log(error);
+      }
+    );
   }
 
   addNewCost() {
     console.log('añadiendo');
-    (this.myForm.controls.arrayCost as FormArray).push(
+    (this.myForm.controls.costs as FormArray).push(
       new FormGroup({
-        typeCost: new FormControl(''),
-        price: new FormControl(''),
+        cost: new FormControl('', Validators.required),
+        price: new FormControl('', Validators.required),
       })
     );
     // @ts-ignore
-    this.manageArrayCostControl(this.myForm.controls.arrayCost.controls.length - 1);
+    this.manageArrayCostControl(this.myForm.controls.costs.controls.length - 1);
   }
 
   deleteCost(i: number) {
     // @ts-ignore
-    if (this.myForm.get('arrayCost').controls.length > 1) {
+    if (this.myForm.get('costs').controls.length > 1) {
       console.log('eliminando');
-      (this.myForm.controls.arrayCost as FormArray).removeAt(i);
+      (this.myForm.controls.costs as FormArray).removeAt(i);
       this.filteredCost.splice(i, 1);
-      this.calculateCost(false);
     }
   }
 
   manageArrayCostControl(index: number) {
-    const arrayControl = this.myForm.get('arrayCost') as FormArray;
+    const arrayControl = this.myForm.get('costs') as FormArray;
     // @ts-ignore
-    this.filteredCost[index] = arrayControl.at(index).controls.typeCost.valueChanges
+    this.filteredCost[index] = arrayControl.at(index).controls.cost.valueChanges
       .pipe(
         startWith(''),
         debounceTime(300),
@@ -111,19 +125,14 @@ export class CotizacionComponent implements OnInit {
           return filter ? this._filterCost(filter) : this.costs.slice();
         })
       );
-    arrayControl.at(index).valueChanges.subscribe(
+    arrayControl.at(index).get('price').valueChanges.subscribe(
       () => {
-        this.calculateCost(true);
+        this.costTotal = 0;
+        for (const control of arrayControl.controls) {
+          this.costTotal += Number(control.get('price').value);
+        }
       }
     );
-  }
-
-  calculateCost(isSum: boolean) {
-    if (isSum) {
-      this.costTotal += 1;
-    } else {
-      this.costTotal -= 1;
-    }
   }
 
   displayFnProcedure(procedure?: ProcedureModel): string | undefined {
@@ -132,5 +141,9 @@ export class CotizacionComponent implements OnInit {
 
   displayFnCost(costModel?: CostModel): string | undefined {
     return costModel ? costModel.name : undefined;
+  }
+
+  getMessageError(attrName: string) {
+    return messageErrorValidation(this.myForm, attrName);
   }
 }
