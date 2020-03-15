@@ -1,0 +1,91 @@
+<div class="container-fluid h-auto">
+  <div class="jumbotron mt-2">
+    <h1 class="text-center">Costos</h1>
+  </div>
+
+  <div *ngIf="!isLoading; else carga">
+
+    <div *ngIf="dataCollection?.length > 0; else noContent">
+      <div class="row justify-content-center">
+        <mat-form-field class="w-75" appearance="outline">
+          <input matInput (keyup)="applyFilter($event.target.value)">
+          <mat-label>
+            <mat-icon inline="true" class="font-weight-bolder" style="font-size: 1.2em">search</mat-icon>
+            <span> Búsqueda</span>
+          </mat-label>
+        </mat-form-field>
+      </div>
+
+
+      <div class="row justify-content-end mt-2">
+        <!--  section add-->
+        <button (click)="add()" type="button" mat-raised-button class="bg-primary text-white mr-3">
+          <mat-icon>add_circle_outline</mat-icon>
+          <span> Añadir</span>
+        </button>
+      </div>
+      <mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+
+        <!-- Position Column -->
+        <!--    <ng-container matColumnDef="position">-->
+        <!--      <mat-header-cell *matHeaderCellDef mat-sort-header> No.</mat-header-cell>-->
+        <!--      <mat-cell *matCellDef="let element">-->
+        <!--        {{element.position}} </mat-cell>-->
+        <!--    </ng-container>-->
+
+        <!--       ID Column -->
+        <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> ID</mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            {{row.id}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre</mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            {{row.name}}</mat-cell>
+        </ng-container>
+
+        <!-- Action Columns Column -->
+        <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef> Acciones</mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <button (click)="edit(row)" type="button" mat-mini-fab class="bg-success mr-1">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button (click)="delete(row.id)" type="button" mat-mini-fab class="bg-danger">
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+      <mat-paginator class="mb-2" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+
+    </div>
+
+    <ng-template #noContent>
+      <div class="alert alert-info">
+        <div class="row justify-content-center">
+          <button (click)="add()" type="button" mat-raised-button class="bg-primary text-white">
+            <mat-icon>add_circle_outline</mat-icon>
+            <span> Añadir</span>
+          </button>
+        </div>
+        <div class="row justify-content-center mt-1">
+          No hay registros aún
+        </div>
+      </div>
+    </ng-template>
+  </div>
+
+  <ng-template #carga>
+    <div class="row justify-content-center">
+      <mat-progress-spinner diameter="250" mode="indeterminate"></mat-progress-spinner>
+    </div>
+  </ng-template>
+
+
+</div>

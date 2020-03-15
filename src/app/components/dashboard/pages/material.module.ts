@@ -33,6 +33,8 @@ import {ProcedureComponent} from './procedure/procedure.component';
 import {ProcedureFormComponent} from './procedure/procedure-form/procedure-form.component';
 import {DigitOnlyDirective} from '../../../Directives/DigitOnlyDirective';
 import {BackButtonDirective} from '../../../Directives/back-button.directive';
+import { CostComponent } from './cost/cost.component';
+import { CostFormComponent } from './cost/cost-form/cost-form.component';
 
 registerLocaleData(localeEs);
 
@@ -49,7 +51,9 @@ registerLocaleData(localeEs);
     ProcedureComponent,
     ProcedureFormComponent,
     DigitOnlyDirective,
-    BackButtonDirective
+    BackButtonDirective,
+    CostComponent,
+    CostFormComponent
   ],
   exports: [
     CotizacionComponent,

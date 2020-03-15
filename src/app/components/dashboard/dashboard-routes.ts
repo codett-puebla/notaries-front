@@ -6,6 +6,8 @@ import {CalendarComponent} from './pages/calendar/calendar.component';
 import {DocumentComponent} from './pages/document/document.component';
 import {ProcedureComponent} from './pages/procedure/procedure.component';
 import {ProcedureFormComponent} from './pages/procedure/procedure-form/procedure-form.component';
+import {CostComponent} from './pages/cost/cost.component';
+import {CostFormComponent} from './pages/cost/cost-form/cost-form.component';
 
 
 export const DASHBOARD_ROUTES: Routes = [
@@ -16,5 +18,7 @@ export const DASHBOARD_ROUTES: Routes = [
   {path: 'documents', component: DocumentComponent},
   {path: 'procedure', component: ProcedureComponent},
   {path: 'procedure-form/:id', component: ProcedureFormComponent},
+  {path: 'cost', component: CostComponent},
+  {path: 'cost-form/:id', component: CostFormComponent},
   {path: '**', pathMatch: 'full', redirectTo: 'budget'}
 ];

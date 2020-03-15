@@ -38,12 +38,6 @@ export class CotizacionComponent implements OnInit {
     );
 
     this.manageArrayCostControl(0);
-    this.inputProcedure.valueChanges.subscribe(
-      () => {
-        (this.myForm.controls.arrayCost as FormArray).clear();
-        // this.addNewCost();
-      }
-    );
   }
 
   ngOnInit() {
