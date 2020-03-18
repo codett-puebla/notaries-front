@@ -8,6 +8,8 @@ import {ProcedureComponent} from './pages/procedure/procedure.component';
 import {ProcedureFormComponent} from './pages/procedure/procedure-form/procedure-form.component';
 import {CostComponent} from './pages/cost/cost.component';
 import {CostFormComponent} from './pages/cost/cost-form/cost-form.component';
+import {CatalogDocumentComponent} from './pages/catalog-document/catalog-document.component';
+import {CatalogDocumentFormComponent} from './pages/catalog-document/catalog-document-form/catalog-document-form.component';
 
 
 export const DASHBOARD_ROUTES: Routes = [
@@ -20,5 +22,7 @@ export const DASHBOARD_ROUTES: Routes = [
   {path: 'procedure-form/:id', component: ProcedureFormComponent},
   {path: 'cost', component: CostComponent},
   {path: 'cost-form/:id', component: CostFormComponent},
+  {path: 'document', component: CatalogDocumentComponent},
+  {path: 'document-form/:id', component: CatalogDocumentFormComponent},
   {path: '**', pathMatch: 'full', redirectTo: 'budget'}
 ];

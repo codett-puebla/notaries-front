@@ -35,6 +35,8 @@ import {DigitOnlyDirective} from '../../../Directives/DigitOnlyDirective';
 import {BackButtonDirective} from '../../../Directives/back-button.directive';
 import { CostComponent } from './cost/cost.component';
 import { CostFormComponent } from './cost/cost-form/cost-form.component';
+import { CatalogDocumentComponent } from './catalog-document/catalog-document.component';
+import { CatalogDocumentFormComponent } from './catalog-document/catalog-document-form/catalog-document-form.component';
 
 registerLocaleData(localeEs);
 
@@ -53,7 +55,9 @@ registerLocaleData(localeEs);
     DigitOnlyDirective,
     BackButtonDirective,
     CostComponent,
-    CostFormComponent
+    CostFormComponent,
+    CatalogDocumentComponent,
+    CatalogDocumentFormComponent
   ],
   exports: [
     CotizacionComponent,

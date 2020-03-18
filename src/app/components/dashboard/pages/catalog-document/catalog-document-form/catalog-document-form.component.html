@@ -1,0 +1,34 @@
+<div class="container-fluid">
+  <form novalidate [formGroup]="form" (ngSubmit)="OnSubmit()" autocomplete="off">
+    <div class="jumbotron mt-2">
+      <h1 class="text-center">Alta tipo de Documento</h1>
+    </div>
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <mat-form-field class="w-100" appearance="outline">
+          <input type="text" matInput formControlName="name">
+          <mat-label>Nombre del Documento</mat-label>
+          <mat-error>{{getMessageError('name')}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="w-100" appearance="outline">
+          <textarea type="text" matInput formControlName="description"></textarea>
+          <mat-label>Descripción</mat-label>
+          <mat-error>{{getMessageError('description')}}</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row justify-content-center mb-2">
+      <div class="col">
+        <button mat-button class="bg-secondary text-white btn-block" type="button" appBackButton>Regresar
+        </button>
+      </div>
+      <div class="col">
+        <button mat-button type="submit"
+                class="bg-primary text-white btn-block" [disabled]="form.invalid">{{getMessageButton()}}
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

@@ -13,6 +13,11 @@
         <mat-error>{{getMessageError('procedure_id')}}</mat-error>
       </mat-form-field>
 
+      <mat-form-field>
+        <input matInput formControlName="folio">
+        <mat-label>Folio</mat-label>
+        <mat-error>{{getMessageError('folio')}}</mat-error>
+      </mat-form-field>
       <mat-accordion>
         <mat-expansion-panel [expanded]="true">
           <mat-expansion-panel-header>
@@ -107,7 +112,7 @@
       <div class="col-4">
         <button class="btn-block" type="submit" mat-raised-button color="primary" [disabled]="myForm.invalid"><i
           class="fa fa-file"> Generar
-          Tramite</i>
+          Cotización</i>
         </button>
       </div>
     </div>

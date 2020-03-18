@@ -30,6 +30,7 @@ export class CotizacionComponent implements OnInit {
     this.myForm = new FormGroup(
       {
         procedure_id: this.inputProcedure,
+        folio: new FormControl('', Validators.required),
         costs: new FormArray([
           new FormGroup({
             cost: new FormControl('', Validators.required),

@@ -1,23 +1,23 @@
 import {ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator, MatSort, MatTable, MatTableDataSource} from '@angular/material';
-import {CostModel} from '../../../../models/cost.model';
+import {DocumentModel} from '../../../../models/document.model';
 import {Subject} from 'rxjs';
-import {CostService} from '../../../../services/cost.service';
+import {DocumentService} from '../../../../services/document.service';
 import {Router} from '@angular/router';
 import {takeUntil} from 'rxjs/operators';
-import {getFilterPredicate} from '../../../../Utils/Utils';
 import {MessageHelper} from '../../../../Utils/MessageHelper';
+import {getFilterPredicate} from '../../../../Utils/Utils';
 import * as _ from 'lodash';
 
 @Component({
-  selector: 'app-cost',
-  templateUrl: './cost.component.html',
-  styleUrls: ['./cost.component.css']
+  selector: 'app-catalog-document',
+  templateUrl: './catalog-document.component.html',
+  styleUrls: ['./catalog-document.component.css']
 })
-export class CostComponent implements OnInit, OnDestroy {
+export class CatalogDocumentComponent implements OnInit, OnDestroy {
   displayedColumns: string[] = ['id', 'name', 'actions'];
-  dataSource: MatTableDataSource<CostModel>;
-  dataCollection: CostModel[] = [];
+  dataSource: MatTableDataSource<DocumentModel>;
+  dataCollection: DocumentModel[] = [];
   isLoading = false;
   ngUnsubscribe = new Subject();
 
@@ -26,7 +26,7 @@ export class CostComponent implements OnInit, OnDestroy {
   @ViewChild(MatSort, {static: false}) sort: MatSort;
 
 
-  constructor(public costService: CostService,
+  constructor(public documentService: DocumentService,
               public change: ChangeDetectorRef, public router: Router) {
 
   }
@@ -51,7 +51,7 @@ export class CostComponent implements OnInit, OnDestroy {
 
   private updateTable() {
     this.isLoading = true;
-    this.costService.getAll().pipe(takeUntil(this.ngUnsubscribe)).subscribe(
+    this.documentService.getAll().pipe(takeUntil(this.ngUnsubscribe)).subscribe(
       response => {
         console.log(response);
         this.dataCollection = response;
@@ -70,16 +70,16 @@ export class CostComponent implements OnInit, OnDestroy {
   }
 
   add() {
-    this.router.navigate(['../dashboard/cost-form', 0]);
+    this.router.navigate(['../dashboard/document-form', 0]);
   }
 
   edit(row: any) {
-    this.router.navigate(['../dashboard/cost-form', row.id]);
+    this.router.navigate(['../dashboard/document-form', row.id]);
   }
 
   delete(id: number) {
     MessageHelper.deleteMessage(id, () => {
-      this.costService.delete(id).subscribe(
+      this.documentService.delete(id).subscribe(
         response => {
           MessageHelper.successMessage('Eliminado', 'Se ha eliminado el area correctamente');
           this.updateTable();
