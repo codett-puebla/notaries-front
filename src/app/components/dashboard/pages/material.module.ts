@@ -41,6 +41,7 @@ import {CostFormComponent} from './cost/cost-form/cost-form.component';
 import {CatalogDocumentComponent} from './catalog-document/catalog-document.component';
 import {CatalogDocumentFormComponent} from './catalog-document/catalog-document-form/catalog-document-form.component';
 import {QuotationComponent} from './quotation/quotation.component';
+import { TransactionComponent } from './transaction/transaction.component';
 
 registerLocaleData(localeEs);
 
@@ -63,6 +64,7 @@ registerLocaleData(localeEs);
     CatalogDocumentFormComponent,
     QuotationComponent,
     QuotationFormComponent,
+    TransactionComponent,
   ],
   exports: [
     NewTransactComponent,

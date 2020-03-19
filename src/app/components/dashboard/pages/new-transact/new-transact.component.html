@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <form [formGroup]="myForm" (ngSubmit)="submit()">
+  <form [formGroup]="myForm" (ngSubmit)="submit()" autocomplete="off">
 
     <!--    Operación transitiva de dominio-->
     <div class="row justify-content-start margen">
@@ -32,8 +32,8 @@
               </div>
             </div>
 
-            <div formArrayName="arrayUser">
-              <div class="row" *ngFor="let controls of this.myForm.controls.arrayUser['controls']; let i = index;">
+            <div formArrayName="granters">
+              <div class="row" *ngFor="let controls of this.myForm.controls.granters['controls']; let i = index;">
                 <div class="col">
                   <div class="row margen" [formGroupName]="i.toString()">
                     <div class="col">
@@ -73,7 +73,7 @@
                 Documentos
               </mat-panel-title>
               <mat-panel-description>
-                Documentación de la cotización {{myForm.controls.inputCotizacion.value}} <i class="fa fa-file pl-1"></i>
+                Documentación de la cotización <i class="fa fa-file pl-1"></i>
               </mat-panel-description>
             </mat-expansion-panel-header>
 
@@ -87,9 +87,9 @@
               </div>
             </div>
 
-            <div formArrayName="arrayDocuments">
+            <div formArrayName="documents">
               <div class="row justify-content-cente margen"
-                   *ngFor="let controls of myForm.controls.arrayDocuments['controls']; let i = index">
+                   *ngFor="let controls of myForm.controls.documents['controls']; let i = index">
                 <div class="col">
                   <div class="row" [formGroupName]="i.toString()">
 
@@ -102,8 +102,9 @@
                                  formControlName="typeDocument">
 
                           <mat-autocomplete #autoC="matAutocomplete">
-                            <mat-option *ngFor="let option of filteredOptions[i] | async" [value]="option">
-                              {{option}}
+                            <mat-option *ngFor="let document of filteredDocuments[i] | async"
+                                        [value]="document.name">
+                              {{document.name}}
                             </mat-option>
                           </mat-autocomplete>
                         </mat-form-field>

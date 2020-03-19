@@ -11,6 +11,7 @@ import {CatalogDocumentComponent} from './pages/catalog-document/catalog-documen
 import {CatalogDocumentFormComponent} from './pages/catalog-document/catalog-document-form/catalog-document-form.component';
 import {QuotationComponent} from './pages/quotation/quotation.component';
 import {QuotationFormComponent} from './pages/quotation/quotation-form/quotation-form.component';
+import {TransactionComponent} from './pages/transaction/transaction.component';
 
 
 export const DASHBOARD_ROUTES: Routes = [
@@ -26,5 +27,6 @@ export const DASHBOARD_ROUTES: Routes = [
   {path: 'cost-form/:id', component: CostFormComponent},
   {path: 'document', component: CatalogDocumentComponent},
   {path: 'document-form/:id', component: CatalogDocumentFormComponent},
+  {path: 'transaction', component: TransactionComponent},
   {path: '**', pathMatch: 'full', redirectTo: 'quotation'}
 ];
