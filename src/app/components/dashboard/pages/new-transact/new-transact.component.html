@@ -1,17 +1,5 @@
 <div class="container-fluid">
   <form [formGroup]="myForm" (ngSubmit)="submit()">
-    <!--    section cotizationNumber-->
-    <div class="row">
-      <mat-form-field class="w-100">
-        <input type="text" placeholder="Número de Cotización" matInput [matAutocomplete]="auto"
-               formControlName="inputCotizacion">
-        <mat-autocomplete #auto="matAutocomplete">
-          <mat-option *ngFor="let cotizacion of filteredCotizacion | async" [value]="cotizacion">
-            {{cotizacion}}
-          </mat-option>
-        </mat-autocomplete>
-      </mat-form-field>
-    </div>
 
     <!--    Operación transitiva de dominio-->
     <div class="row justify-content-start margen">
@@ -149,10 +137,14 @@
         </mat-accordion>
       </div>
     </div>
-    <div class="row justify-content-center margen">
-      <div class="col-4">
-        <button class="w-100" mat-raised-button color="primary" type="submit"><i class="fa fa-save pr-1"></i>Ejecutar
-          Acción
+    <div class="row justify-content-center mt-2">
+      <div class="col">
+        <button mat-button class="bg-secondary text-white btn-block" type="button" appBackButton>Regresar
+        </button>
+      </div>
+      <div class="col">
+        <button mat-button type="submit"
+                class="bg-primary text-white btn-block" [disabled]="myForm.invalid"> Iniciar Tramite
         </button>
       </div>
     </div>

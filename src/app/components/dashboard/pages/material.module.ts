@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {CotizacionComponent} from './cotizacion/cotizacion.component';
+import {QuotationFormComponent} from './quotation/quotation-form/quotation-form.component';
 import {
   MatAutocompleteModule,
   MatButtonModule,
@@ -10,7 +10,10 @@ import {
   MatExpansionModule,
   MatFormFieldModule,
   MatIconModule,
-  MatInputModule, MatPaginatorModule, MatProgressSpinnerModule, MatSortModule,
+  MatInputModule,
+  MatPaginatorModule,
+  MatProgressSpinnerModule,
+  MatSortModule,
   MatTableModule,
   MatTabsModule,
   MatTooltipModule
@@ -33,16 +36,16 @@ import {ProcedureComponent} from './procedure/procedure.component';
 import {ProcedureFormComponent} from './procedure/procedure-form/procedure-form.component';
 import {DigitOnlyDirective} from '../../../Directives/DigitOnlyDirective';
 import {BackButtonDirective} from '../../../Directives/back-button.directive';
-import { CostComponent } from './cost/cost.component';
-import { CostFormComponent } from './cost/cost-form/cost-form.component';
-import { CatalogDocumentComponent } from './catalog-document/catalog-document.component';
-import { CatalogDocumentFormComponent } from './catalog-document/catalog-document-form/catalog-document-form.component';
+import {CostComponent} from './cost/cost.component';
+import {CostFormComponent} from './cost/cost-form/cost-form.component';
+import {CatalogDocumentComponent} from './catalog-document/catalog-document.component';
+import {CatalogDocumentFormComponent} from './catalog-document/catalog-document-form/catalog-document-form.component';
+import {QuotationComponent} from './quotation/quotation.component';
 
 registerLocaleData(localeEs);
 
 @NgModule({
   declarations: [
-    CotizacionComponent,
     NewTransactComponent,
     ExternalLinksComponent,
     DomseguroPipe,
@@ -57,10 +60,11 @@ registerLocaleData(localeEs);
     CostComponent,
     CostFormComponent,
     CatalogDocumentComponent,
-    CatalogDocumentFormComponent
+    CatalogDocumentFormComponent,
+    QuotationComponent,
+    QuotationFormComponent,
   ],
   exports: [
-    CotizacionComponent,
     NewTransactComponent,
     ExternalLinksComponent,
     DomseguroPipe,

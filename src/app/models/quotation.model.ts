@@ -1,4 +1,4 @@
-export class CostModel {
+export class QuotationModel {
   id: number;
   transfer?: number;
   notice?: number;

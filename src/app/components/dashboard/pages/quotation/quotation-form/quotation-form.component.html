@@ -108,11 +108,14 @@
       </mat-accordion>
     </div>
 
-    <div class="row justify-content-center margen">
-      <div class="col-4">
-        <button class="btn-block" type="submit" mat-raised-button color="primary" [disabled]="myForm.invalid"><i
-          class="fa fa-file"> Generar
-          Cotización</i>
+    <div class="row justify-content-center mb-2">
+      <div class="col">
+        <button mat-button class="bg-secondary text-white btn-block" type="button" appBackButton>Regresar
+        </button>
+      </div>
+      <div class="col">
+        <button mat-button type="submit"
+                class="bg-primary text-white btn-block" [disabled]="myForm.invalid"> Generar Cotización
         </button>
       </div>
     </div>

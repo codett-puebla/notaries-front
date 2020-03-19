@@ -1,20 +1,21 @@
 import {Component, OnInit} from '@angular/core';
 import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
 import {debounceTime, map, startWith} from 'rxjs/operators';
-import {ProcedureService} from '../../../../services/procedure.service';
-import {ProcedureModel} from '../../../../models/procedure.model';
-import {CostService} from '../../../../services/cost.service';
-import {CostModel} from '../../../../models/cost.model';
-import {messageErrorValidation} from '../../../../Utils/ValidatorsHelper';
-import {QuotationService} from '../../../../services/quotation.service';
-import {MessageHelper} from '../../../../Utils/MessageHelper';
+import {ProcedureService} from '../../../../../services/procedure.service';
+import {ProcedureModel} from '../../../../../models/procedure.model';
+import {CostService} from '../../../../../services/cost.service';
+import {CostModel} from '../../../../../models/cost.model';
+import {messageErrorValidation} from '../../../../../Utils/ValidatorsHelper';
+import {QuotationService} from '../../../../../services/quotation.service';
+import {MessageHelper} from '../../../../../Utils/MessageHelper';
+import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-cotizacion',
-  templateUrl: './cotizacion.component.html',
-  styleUrls: ['./cotizacion.component.css']
+  selector: 'app-cotizacion-form',
+  templateUrl: './quotation-form.component.html',
+  styleUrls: ['./quotation-form.component.css']
 })
-export class CotizacionComponent implements OnInit {
+export class QuotationFormComponent implements OnInit {
   myForm: FormGroup;
   inputProcedure = new FormControl('', Validators.required);
   // opciones a seleccionar
@@ -25,7 +26,7 @@ export class CotizacionComponent implements OnInit {
   costs: CostModel[] = [];
 
   constructor(public procedureService: ProcedureService, public costService: CostService,
-              public quotationService: QuotationService
+              public quotationService: QuotationService, public router: Router
   ) {
     this.myForm = new FormGroup(
       {
@@ -86,6 +87,7 @@ export class CotizacionComponent implements OnInit {
     this.quotationService.add(this.myForm.value).subscribe(
       response => {
         MessageHelper.successMessage('Añadido', 'Se genero cotización con exito');
+        this.router.navigate(['../dashboard/quotation']);
       }, error => {
         MessageHelper.errorMessage('Ocurrio un error, intente de nuevamente');
         console.log(error);
